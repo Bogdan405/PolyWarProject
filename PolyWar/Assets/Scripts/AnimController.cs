@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SentryAnimController : MonoBehaviour
+public class AnimController : MonoBehaviour
 {
     public Animator anim;
 
