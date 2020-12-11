@@ -25,6 +25,10 @@ public class ConnectToRoom : MonoBehaviourPunCallbacks
             Debug.Log("No internet connection");
             return; 
         }
+        if (PhotonNetwork.InRoom)
+        {
+            return;
+        }
         string nickname = playerNameText.text;
         if (nickname == null)
         {

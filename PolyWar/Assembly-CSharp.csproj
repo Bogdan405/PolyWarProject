@@ -287,12 +287,12 @@
      <Compile Include="Assets\Photon\Simple\Utilities\Pooling\Pool.cs" />
      <Compile Include="Assets\Photon\Simple\Utilities\SimpleDocsURLS.cs" />
      <Compile Include="Assets\Photon\Simple\Utilities\SmartVars\SmartVars.cs" />
+     <Compile Include="Assets\Scripts\AnimController.cs" />
      <Compile Include="Assets\Scripts\Characters\IPolyCharacter.cs" />
      <Compile Include="Assets\Scripts\Network\ConnectToMaster.cs" />
      <Compile Include="Assets\Scripts\Network\ConnectToRoom.cs" />
      <Compile Include="Assets\Scripts\Network\MessageConsoleScript.cs" />
      <Compile Include="Assets\Scripts\Network\PlayerPlateScript.cs" />
-     <Compile Include="Assets\Scripts\SentryAnimController.cs" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
      <None Include="Assets\Photon\PhotonUtilities\PackObject\_GeneratedPackExtensions\PackObject Extensions.txt" />
