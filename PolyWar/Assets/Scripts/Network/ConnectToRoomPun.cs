@@ -86,6 +86,7 @@ public class ConnectToRoomPun : MonoBehaviourPunCallbacks
     [PunRPC]
     public void DestroyCurrentRoom()
     {
+        otherPlayerAccept = false;
         if (PhotonNetwork.IsMasterClient) {
             PhotonNetwork.DestroyAll();
         }
