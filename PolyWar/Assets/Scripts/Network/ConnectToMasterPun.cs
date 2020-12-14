@@ -22,7 +22,7 @@ public class ConnectToMasterPun : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        SSTools.ShowMessage("Cannot connect to Server!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+        SSTools.ShowMessage("Cannot connect to Server!", SSTools.Position.top, SSTools.Time.threeSecond);
         Application.Quit();
     }
 }
