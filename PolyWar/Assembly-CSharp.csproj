@@ -296,6 +296,7 @@
      <Compile Include="Assets\Scripts\Network\Test\ConnectToRoom.cs" />
      <Compile Include="Assets\Scripts\Network\Test\MessageConsoleScript.cs" />
      <Compile Include="Assets\Scripts\Network\Test\PlayerPlateScript.cs" />
+     <Compile Include="Assets\Scripts\UI\MainMenuUI.cs" />
      <Compile Include="Assets\Scripts\UI\UIManager.cs" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />

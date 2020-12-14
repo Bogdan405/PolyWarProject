@@ -17,12 +17,12 @@ public class ConnectToMasterPun : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        SSTools.ShowMessage("Connected to Server!", SSTools.Position.bottom,SSTools.Time.oneSecond);
+        SSTools.ShowMessage("Connected to Server!", SSTools.Position.bottom,SSTools.Time.twoSecond);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        SSTools.ShowMessage("Cannot connect to Server!", SSTools.Position.top, SSTools.Time.threeSecond);
+        SSTools.ShowMessage("Cannot connect to Server!", SSTools.Position.top, SSTools.Time.twoSecond);
         Application.Quit();
     }
 }
