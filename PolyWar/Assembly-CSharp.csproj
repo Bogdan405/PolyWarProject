@@ -269,6 +269,7 @@
      <Compile Include="Assets\Photon\Simple\Utilities\SimpleDocsURLS.cs" />
      <Compile Include="Assets\Photon\Simple\Utilities\SmartVars\SmartVars.cs" />
      <Compile Include="Assets\SSTools\Scripts\SSTools.cs" />
+     <Compile Include="Assets\Scenes\ARRecognitionManager\ImageDetectionScript.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
      <Compile Include="Assets\Scripts\Characters\IPolyCharacter.cs" />
      <Compile Include="Assets\Scripts\Network\ConnectToMasterPun.cs" />
