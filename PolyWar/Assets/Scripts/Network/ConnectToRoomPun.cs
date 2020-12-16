@@ -13,7 +13,7 @@ public class ConnectToRoomPun : MonoBehaviourPunCallbacks
     public GameObject UI;
     private MainMenuUI menuUI;
     private bool otherPlayerAccept = false;
-
+    private bool personal_accept = false;
 
     public void Start()
     {
@@ -107,6 +107,11 @@ public class ConnectToRoomPun : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartGame()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+        }
         SceneManager.LoadScene("Game");
     }
 
@@ -114,15 +119,18 @@ public class ConnectToRoomPun : MonoBehaviourPunCallbacks
     public void OnClickAcceptGame()
     {
         PhotonView connection = PhotonView.Get(this);
-        if (otherPlayerAccept)
-        {
-            connection.RPC("StartGame", RpcTarget.All);
-        }
-        else 
-        {
-            otherPlayerAccept = true;
-            connection.RPC("NotifyAcceptance", RpcTarget.All);
-            SSTools.ShowMessage("Accepted!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+        if (!personal_accept) { 
+            personal_accept = true;
+            if (otherPlayerAccept)
+            {
+                connection.RPC("StartGame", RpcTarget.All);
+            }
+            else 
+            {
+                otherPlayerAccept = true;
+                connection.RPC("NotifyAcceptance", RpcTarget.All);
+                SSTools.ShowMessage("Accepted!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+            }
         }
     }
 }
