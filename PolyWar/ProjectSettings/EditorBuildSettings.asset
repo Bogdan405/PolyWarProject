@@ -47,19 +47,19 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FinalProjectScenes/MainMenu.unity
     guid: 860db3e51160c8943888d1eb35f39a2c
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/FinalProjectScenes/Game.unity
+    guid: 196d8f0f2374ee14bbf582f18f4d1d51
+  - enabled: 1
     path: Assets/Scenes/FinalProjectScenes/HowToPlay.unity
     guid: 0c56254ee3c262c4690dbe0deb44909c
   - enabled: 0
-    path: Assets/Scenes/FinalProjectScenes/Game.unity
-    guid: 196d8f0f2374ee14bbf582f18f4d1d51
-  - enabled: 0
     path: Assets/Scenes/StartGame.unity
     guid: 7a9c829993a5c894a89a25c139af9a03
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ARRecognitionManager/ImageDetection.unity
     guid: 268dd7e3252f5124eb837b4e37e54ef1
   m_configObjects: {}

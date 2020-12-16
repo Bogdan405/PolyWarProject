@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class SSTools : MonoBehaviour {
 
     public enum Time
-    {
+    {   
+        fiveSecond,
+        fourSecond,
         threeSecond,
         twoSecond,
         oneSecond
@@ -12,7 +14,8 @@ public class SSTools : MonoBehaviour {
     public enum Position
     {
         top,
-        bottom
+        bottom,
+        middle
     };
     public static void ShowMessage ( string msg, SSTools.Position position, SSTools.Time time )
     {
@@ -43,11 +46,17 @@ public class SSTools : MonoBehaviour {
             rectTransform.anchorMax = new Vector2 ( 0.5f, 1f );
             rectTransform.anchoredPosition = new Vector3 ( 0.5f, -100f, 0 );
         }
-        else
+        else if(position == Position.bottom)
         {
             rectTransform.anchorMin = new Vector2 ( 0.5f, 0 );
             rectTransform.anchorMax = new Vector2 ( 0.5f, 0 );
             rectTransform.anchoredPosition = new Vector3 ( 0.5f, 100f, 0 );
+        }
+        else if(position == Position.middle)
+        {
+            rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            rectTransform.anchoredPosition = new Vector3(0f, 0f, 0);
         }
     }
 
@@ -61,9 +70,17 @@ public class SSTools : MonoBehaviour {
         {
             Destroy ( clone.gameObject, 2f );
         }
-        else
+        else if (time == Time.threeSecond)
         {
             Destroy ( clone.gameObject, 3f );
+        }
+        else if (time == Time.fourSecond)
+        {
+            Destroy(clone.gameObject, 4f);
+        }
+        else if (time == Time.fiveSecond)
+        {
+            Destroy(clone.gameObject, 5f);
         }
     }
 }

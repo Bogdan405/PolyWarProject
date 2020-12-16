@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImage
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5332590065055554682
+  m_GuidHigh: 17035192212032024210
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5293769535161692719
+      m_GuidHigh: 2057392736990507162
+    m_SerializedTextureGuid:
+      m_GuidLow: 2131370102901905497
+      m_GuidHigh: 12523619694804772136
+    m_Size: {x: 0.3, y: 0.3}
+    m_SpecifySize: 0
+    m_Name: Elephant
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4677844773193349475
+      m_GuidHigh: 10025567877933182383
+    m_SerializedTextureGuid:
+      m_GuidLow: 16506941470334033386
+      m_GuidHigh: 1271822983470299129
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Owl
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4820108343891185657
+      m_GuidHigh: 5124129602783279270
+    m_SerializedTextureGuid:
+      m_GuidLow: 15475557286472514942
+      m_GuidHigh: 11868047892659248011
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Scorpion
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4989087048928227112
+      m_GuidHigh: 15783291544021179556
+    m_SerializedTextureGuid:
+      m_GuidLow: 6355740967576944751
+      m_GuidHigh: 17135851528425651609
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Snake
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5734732549451565130
+      m_GuidHigh: 6258009693748421305
+    m_SerializedTextureGuid:
+      m_GuidLow: 13521050435282954813
+      m_GuidHigh: 17978553324604384922
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Eagle
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4804237083723847543
+      m_GuidHigh: 5643679263203517328
+    m_SerializedTextureGuid:
+      m_GuidLow: 3640106640688104382
+      m_GuidHigh: 16776399609176855801
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Boar
+    m_Texture: {fileID: 0}
