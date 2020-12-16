@@ -18,7 +18,14 @@ namespace GameUserInterface{
 
         public void Start()
         {
-            SSTools.ShowMessage("Scan the battlefield!", SSTools.Position.middle, SSTools.Time.fiveSecond);
+            if (PhotonNetwork.InRoom) 
+            {
+                SSTools.ShowMessage("Scan the battlefield!", SSTools.Position.middle, SSTools.Time.fiveSecond);
+            }
+            else
+            {
+                SSTools.ShowMessage("Not Connected!", SSTools.Position.middle, SSTools.Time.fiveSecond);
+            }
         }
 
         public void OnClickHideUI()

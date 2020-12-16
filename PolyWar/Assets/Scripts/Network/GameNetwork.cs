@@ -26,9 +26,5 @@ public class GameNetwork : MonoBehaviour
             GameUI gameUI= UI.GetComponent<GameUI>();
             gameUI.ShowAllPlayersAreReady();
         }
-        else
-        {
-            SSTools.ShowMessage("Field Scanned!", SSTools.Position.middle, SSTools.Time.threeSecond);
-        }
     }
 }

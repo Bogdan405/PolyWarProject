@@ -21,6 +21,7 @@ public class ImageDetectionScript : MonoBehaviour
 
     public void Start()
     {
+        fieldScanned = new Dictionary<string, bool>();
         fieldScanned.Add("Snake", false);
         fieldScanned.Add("Boar", false);
         fieldScanned.Add("Eagle", false);
@@ -42,17 +43,20 @@ public class ImageDetectionScript : MonoBehaviour
     {
         foreach (var trackedImage in args.added)
         {
+            SSTools.ShowMessage(trackedImage.referenceImage.name + " scanned", SSTools.Position.middle, SSTools.Time.oneSecond);
             fieldScanned[trackedImage.referenceImage.name] = true;
         }
-        foreach(KeyValuePair<string,bool> el in fieldScanned)
+        foreach(string el in fieldScanned.Keys)
         {
-            if (el.Value == false)
+            if (fieldScanned[el] == false)
             {
+                SSTools.ShowMessage("Please scan "+el, SSTools.Position.bottom, SSTools.Time.oneSecond);
                 return;
             }
         }
         if (announced_field_scanned == false)
-        {   
+        {
+            SSTools.ShowMessage("Field Scanned!", SSTools.Position.middle, SSTools.Time.threeSecond);
             announced_field_scanned = true;
             PhotonView UIPV = PhotonView.Get(connection);
             UIPV.RPC("updateReadyPlayers", RpcTarget.All);
