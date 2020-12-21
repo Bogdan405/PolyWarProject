@@ -6,18 +6,15 @@ using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using Photon.Pun;
 using GameUserInterface;
-
+using PlayerTurn;
 public class GameNetwork : MonoBehaviour
 {
     private int players_ready = 0;
     public GameObject UI;
     public GameObject exitPanel;
     public GameObject exitText;
+    public GameObject gameLogic;
 
-    public void Start()
-    {
-
-    }
 
 
     [PunRPC]
@@ -28,6 +25,8 @@ public class GameNetwork : MonoBehaviour
         {
             GameUI gameUI= UI.GetComponent<GameUI>();
             gameUI.ShowAllPlayersAreReady();
+            PhotonView turnPV = PhotonView.Get(gameLogic);
+            turnPV.RPC("InitTurns", RpcTarget.All);
         }
     }
 

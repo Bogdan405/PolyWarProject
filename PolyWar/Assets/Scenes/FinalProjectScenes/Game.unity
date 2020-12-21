@@ -380,6 +380,7 @@ MonoBehaviour:
   UI: {fileID: 1369081536}
   exitPanel: {fileID: 515177809}
   exitText: {fileID: 1392926846}
+  gameLogic: {fileID: 1400664297}
 --- !u!4 &171987823
 Transform:
   m_ObjectHideFlags: 0
@@ -765,7 +766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &515177810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1576,6 +1577,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1400664298}
+  - component: {fileID: 1400664300}
+  - component: {fileID: 1400664299}
+  - component: {fileID: 1400664301}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -1591,12 +1595,59 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400664297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 608.67017, y: 332.77417, z: -177.06464}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1400664299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400664297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1400664300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400664297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0cd7d22987cd24bac45edc760ca99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnPanel: {fileID: 1787689634}
+--- !u!114 &1400664301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400664297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e54922e2b88304d888271848e8ce44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1415640785
 GameObject:
   m_ObjectHideFlags: 0
