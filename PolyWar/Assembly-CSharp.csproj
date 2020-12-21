@@ -293,6 +293,7 @@
     <Compile Include="Assets\Scripts\AR\ImageDetectionScript.cs" />
     <Compile Include="Assets\Scripts\AnimController.cs" />
     <Compile Include="Assets\Scripts\Characters\IPolyCharacter.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\Battle.cs" />
     <Compile Include="Assets\Scripts\GameLogic\CardClass.cs" />
     <Compile Include="Assets\Scripts\GameLogic\HP.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PlayerNames.cs" />
