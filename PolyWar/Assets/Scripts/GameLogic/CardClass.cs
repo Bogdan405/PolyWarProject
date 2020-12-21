@@ -53,6 +53,15 @@ public class CardClass : MonoBehaviour
     //fara implementare cel mai probabil
     //cu fiecare animatie necesara
 
+    public void fullSet(int newDamage, int newLife, string newName, short newElement)
+    {
+        this.setDamage(newDamage);
+        this.setLife(newLife);
+        this.setName(newName);
+        this.setElement(newElement);
+    }
+
+
     void Start()
     {
         
