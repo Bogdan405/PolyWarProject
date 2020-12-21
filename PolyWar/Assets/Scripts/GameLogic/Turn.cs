@@ -18,6 +18,12 @@ namespace PlayerTurn {
         private TurnType currentTurn;
         public GameObject turnPanel;
 
+        public void OnClickInitTurns()
+        {
+            PhotonView turnPV = PhotonView.Get(this);
+            turnPV.RPC("InitTurns", RpcTarget.All);
+        }
+
 
         public void OnClickChangeTurn()
         {
@@ -55,7 +61,7 @@ namespace PlayerTurn {
             }
             else
             {
-                panelText.text = this.GetComponent<PlayerNames>().GetOpponentsName();
+                panelText.text = this.GetComponent<PlayerNames>().GetOpponentsName() +"'s Turn";
             }
         }
 
