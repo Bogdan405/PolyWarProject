@@ -10,9 +10,12 @@ public class ConnectToMasterPun : MonoBehaviourPunCallbacks
     public
     void Start()
     {
-        PhotonNetwork.GameVersion = "0.0.1";
-        PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "eu";
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected) 
+        { 
+            PhotonNetwork.GameVersion = "0.0.1";
+            PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "eu";
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     public override void OnConnectedToMaster()

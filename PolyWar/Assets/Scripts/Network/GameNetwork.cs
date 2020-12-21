@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using Photon.Pun;
 using GameUserInterface;
@@ -9,7 +11,8 @@ public class GameNetwork : MonoBehaviour
 {
     private int players_ready = 0;
     public GameObject UI;
-
+    public GameObject exitPanel;
+    public GameObject exitText;
 
     public void Start()
     {
@@ -27,4 +30,39 @@ public class GameNetwork : MonoBehaviour
             gameUI.ShowAllPlayersAreReady();
         }
     }
+
+    [PunRPC]
+    public void ExitGame(string reason)
+    {
+        Text exitString = exitText.GetComponent<Text>();
+        exitString.text = reason;
+        HideUIOnExit();
+    }
+
+
+    public void OnClickSurrender()
+    {
+        PhotonView connPV = PhotonView.Get(this);
+        connPV.RPC("ExitGame", RpcTarget.Others, "The opponent has surrendered");
+        Text exitString = exitText.GetComponent<Text>();
+        exitString.text = "You have surrendered!";
+        HideUIOnExit();
+    }
+
+    public void HideUIOnExit()
+    {
+        exitPanel.SetActive(true);
+        GameUI gameUI = UI.GetComponent<GameUI>();
+        gameUI.OnClickHideUI();
+        gameUI.setShowButton(false);
+    }
+
+    public void OnClickLeaveRoom()
+    {
+        SSTools.ShowMessage("Left game!",SSTools.Position.bottom,SSTools.Time.threeSecond);
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
 }

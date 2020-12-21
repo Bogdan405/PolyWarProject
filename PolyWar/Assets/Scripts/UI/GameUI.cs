@@ -39,6 +39,12 @@ namespace GameUserInterface{
             MyHPButton.SetActive(false);
             ShowButton.SetActive(true);
         }
+
+        public void setShowButton(bool value)
+        {
+            ShowButton.SetActive(value);
+            HideButton.SetActive(value);
+        }
         public void OnClickShowUI()
         {
             LeaveButton.SetActive(true);
