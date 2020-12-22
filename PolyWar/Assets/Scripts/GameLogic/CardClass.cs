@@ -81,15 +81,27 @@ namespace Card {
         {
             anim = GetComponent<Animator>();
             Debug.Log("Idle");
-            anim.Play("Defend");
+            //anim.Play("Idle");
         }
 
         // Update is called once per frame
         void Update()
         {
-          
+            if (Input.GetKeyDown("1"))
+            {
+            anim.Play("Attack");
+            }
+            else if (Input.GetKeyDown("2"))
+            {
             anim.Play("Defend");
-
+            }
+            else if (Input.GetKeyDown("3"))
+            {
+            anim.Play("Death");
+            }
+            else if (Input.GetKeyDown("4")) {
+            anim.Play("Idle");
+            }
         // TODO pentru celelalte 3 animatii avem nevoie de triggere specifice
         }
     }
