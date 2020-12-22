@@ -80,8 +80,8 @@ namespace Card {
         void Start()
         {
             anim = GetComponent<Animator>();
-            Debug.Log("Idle");
-            //anim.Play("Idle");
+            //Debug.Log("Defend");
+            //anim.Play("Defend");
         }
 
         // Update is called once per frame
@@ -97,6 +97,7 @@ namespace Card {
             }
             else if (Input.GetKeyDown("3"))
             {
+              
             anim.Play("Death");
             }
             else if (Input.GetKeyDown("4")) {
