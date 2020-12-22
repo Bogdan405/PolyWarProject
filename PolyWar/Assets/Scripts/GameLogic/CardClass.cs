@@ -2,74 +2,95 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardClass : MonoBehaviour
-{
+namespace Card { 
 
-    public int life;
-    public int damage;
-    public string fullName;
-    public short element;
-
-
-    public int getLife()
+    public class CardClass : MonoBehaviour
     {
-        return this.life;
-    }
-    public int getDamage()
-    {
-        return this.damage;
-    }
 
-    public string getName()
-    {
-        return this.fullName;
-    }
+        public float life;
+        public float damage;
+        public string fullName;
+        public Element element;
+        public Animator anim;
 
-    public short getElement()
-    {
-        return this.element;
-    }
+        public CardClass()
+        {
 
-    public void setLife(int newLife)
-    {
-        this.life = newLife;
-    }
-    public void setDamage(int newDamage)
-    {
-        this.damage = newDamage;
-    }
+        }
 
-    public void setName(string newName)
-    {
-        this.fullName = newName;
-    }
+        public void SubstractLife(float damage)
+        {
+            this.life = this.life - damage;
+        }
+        public float GetLife()
+        {
+            return this.life;
+        }
+        public float GetDamage()
+        {
+            return this.damage;
+        }
 
-    public void setElement(short newElement)
-    {
-        this.element = newElement;
-    }
+        public string GetName()
+        {
+            return this.fullName;
+        }
 
-    //De adaugat 3 functii
-    //fara implementare cel mai probabil
-    //cu fiecare animatie necesara
+        public Element GetElement()
+        {
+            return this.element;
+        }
 
-    public void fullSet(int newDamage, int newLife, string newName, short newElement)
-    {
-        this.setDamage(newDamage);
-        this.setLife(newLife);
-        this.setName(newName);
-        this.setElement(newElement);
-    }
+        public void SetLife(float newLife)
+        {
+            this.life = newLife;
+        }
+        public void SetDamage(float newDamage)
+        {
+            this.damage = newDamage;
+        }
+
+        public void SetName(string newName)
+        {
+            this.fullName = newName;
+        }
+
+        public void SetElement(Element newElement)
+        {
+            this.element = newElement;
+        }
+
+        //De adaugat 3 functii
+        //fara implementare cel mai probabil
+        //cu fiecare animatie necesara
 
 
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+        public void fullSet(float newDamage, float newLife, string newName, Element newElement)
+        {
+            this.SetDamage(newDamage);
+            this.SetLife(newLife);
+            this.SetName(newName);
+            this.SetElement(newElement);
+        }
+
+
+
+        void Start()
+        {
+            anim = GetComponent<Animator>();
+            Debug.Log("Idle");
+            anim.Play("Defend");
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+          
+            anim.Play("Defend");
+
+        // TODO pentru celelalte 3 animatii avem nevoie de triggere specifice
+        }
     }
 }
