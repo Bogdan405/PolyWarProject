@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Card;
+using Photon.Realtime;
+using Photon.Pun;
 
 public class Board : MonoBehaviour
 {
     private CardClass[] enemyCards;
     private CardClass[] personalCards;
+    private bool playedCardThisTurn;
+    private GameObject gameUI;
+    private GameObject turn;
 
     void Start()
     {
         enemyCards = new CardClass[3];
         personalCards = new CardClass[3];
+        playedCardThisTurn = false;
+        
+
 
         enemyCards[0] = null;
         enemyCards[1] = this.gameObject.AddComponent<CardClass>() as CardClass;
@@ -33,6 +41,11 @@ public class Board : MonoBehaviour
         return personalCards;
     }
 
+    public bool GetPlayedCardThisTurn()
+    {
+        return playedCardThisTurn;
+    }
+
     public void SetEnemyCard(int cardNumber, CardClass card)
     {
         enemyCards[cardNumber] = card;
@@ -43,8 +56,30 @@ public class Board : MonoBehaviour
         enemyCards[cardNumber] = card;
     }
 
-    public void CheckIfCanEndTurn()
+    public void PlayCard()
     {
-        
+
+    }
+
+    public void Fight()
+    {
+
+    }
+
+    public void OnClickEndTurn()
+    {
+
+    }
+
+    [PunRPC]
+    public void HideUI()
+    {
+
+    }
+
+    [PunRPC]
+    public void ResetPlayerTurn()
+    {
+
     }
 }
