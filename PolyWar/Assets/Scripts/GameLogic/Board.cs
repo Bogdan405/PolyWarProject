@@ -14,12 +14,12 @@ public class Board : MonoBehaviour
         personalCards = new CardClass[3];
 
         enemyCards[0] = null;
-        enemyCards[1] = Factory(Model.Sentry, Element.Automaton);
-        enemyCards[2] = Factory(Model.Juggernaut, Element.Chemical);
+        enemyCards[1] = new CardClass(Model.Sentry, Element.Automaton);
+        enemyCards[2] = new CardClass(Model.Juggernaut, Element.Chemical);
 
-        personalCards[0] = Factory(Model.Sentry, Element.Chemical);
-        personalCards[1] = Factory(Model.Wraith, Element.Undead);
-        personalCards[2] = Factory(Model.Enchanter, Element.Automaton);
+        personalCards[0] = new CardClass(Model.Sentry, Element.Chemical);
+        personalCards[1] = new CardClass(Model.Wraith, Element.Undead);
+        personalCards[2] = new CardClass(Model.Enchanter, Element.Automaton);
     }
 
     public CardClass[] GetEnemyCards()
