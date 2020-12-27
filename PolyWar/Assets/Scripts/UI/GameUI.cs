@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
+using Card;
 
 namespace GameUserInterface{ 
     public class GameUI : MonoBehaviour
@@ -16,6 +17,7 @@ namespace GameUserInterface{
         public GameObject EnemyHPButton;
         public GameObject MyHPButton;
         public GameObject Battlefield;
+        public GameObject GameLogic;
         private bool battlefieldShown = false;
         public void Start()
         {
@@ -74,6 +76,9 @@ namespace GameUserInterface{
             {
                 battlefieldShown = true;
                 Battlefield.SetActive(true);
+               // CardClass[] myCards = ;
+               // CardClass[] enemyCards = ;
+                //Battlefield.GetComponent<BattlefieldUI>().UpdateBattleFieldUI(myCards,enemyCards);
             }
         }
     }

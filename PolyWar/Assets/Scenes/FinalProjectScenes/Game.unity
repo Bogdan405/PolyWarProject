@@ -3301,6 +3301,7 @@ MonoBehaviour:
   EnemyHPButton: {fileID: 1006299818}
   MyHPButton: {fileID: 230831015}
   Battlefield: {fileID: 800714225}
+  GameLogic: {fileID: 1400664297}
 --- !u!114 &1369081540
 MonoBehaviour:
   m_ObjectHideFlags: 0
