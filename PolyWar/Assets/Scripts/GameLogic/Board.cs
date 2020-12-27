@@ -61,9 +61,12 @@ public class Board : MonoBehaviour
     public void PlayCard()
     {
         //SetPersonalCard(2,Factory(Model.Sentry, Element.Chemical))
-        personalCards[0].Factory(Model.Sentry, Element.Chemical);
-        playedCardThisTurn = true;
-        UI.GetComponent<GameUI>().SetEndTurnButton(true);
+        if(this.GetComponent<Turn>().IsMyTurn())
+        {
+            personalCards[0].Factory(Model.Sentry, Element.Chemical);
+            playedCardThisTurn = true;
+            UI.GetComponent<GameUI>().SetEndTurnButton(true);
+        }
     }
 
     public void Fight()
@@ -107,6 +110,7 @@ public class Board : MonoBehaviour
         {
                 PhotonView boardPV = PhotonView.Get(this);
                 boardPV.RPC("ChangeTurn", RpcTarget.Others);
+                UI.GetComponent<GameUI>().SetEndTurnButton(false);
         }
         if(this.GetComponent<Turn>().IsMyTurn()){
             playedCardThisTurn = false;
