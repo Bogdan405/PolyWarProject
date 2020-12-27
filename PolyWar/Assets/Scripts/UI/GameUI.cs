@@ -18,6 +18,7 @@ namespace GameUserInterface{
         public GameObject MyHPButton;
         public GameObject Battlefield;
         public GameObject GameLogic;
+        public GameObject EndTurn;
         private bool battlefieldShown = false;
         public void Start()
         {
@@ -43,6 +44,12 @@ namespace GameUserInterface{
             battlefieldShown = false;
             Battlefield.SetActive(false);
             ShowButton.SetActive(true);
+            SetEndTurnButton(false);
+        }
+
+        public void SetEndTurnButton(bool value)
+        {
+            EndTurn.SetActive(value);
         }
 
         public void setShowButton(bool value)
@@ -60,7 +67,13 @@ namespace GameUserInterface{
             EnemyHPButton.SetActive(true);
             MyHPButton.SetActive(true);
             ShowButton.SetActive(false);
+            if (GameLogic.GetComponent<Board>().GetPlayedCardThisTurn())
+            {
+                SetEndTurnButton(true);
+            }
+            
         }
+        
 
         public void ShowAllPlayersAreReady()
         {
