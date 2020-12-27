@@ -40,6 +40,8 @@ namespace GameUserInterface{
             SurrenderButton.SetActive(false);
             EnemyHPButton.SetActive(false);
             MyHPButton.SetActive(false);
+            battlefieldShown = false;
+            Battlefield.SetActive(false);
             ShowButton.SetActive(true);
         }
 
