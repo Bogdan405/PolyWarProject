@@ -32,6 +32,7 @@ namespace Card {
         public Model model;
         public Element element;
         public Animator anim;
+        public GameObject ARModel;
 
         public void Factory(Model model, Element element)
         {
@@ -92,12 +93,12 @@ namespace Card {
 
         public string GetElement()
         {
-            return nameof(this.element);
+            return this.element.ToString();
         }
 
         public string GetModel()
         {
-            return nameof(this.model);
+            return this.model.ToString();
         }
 
         public void SetLife(int newLife)
@@ -120,26 +121,21 @@ namespace Card {
         }
 
         public void AttackAnimation(){
-            anim.Play("Attack");
+            ARModel.GetComponent<Animator>().Play("Attack");
         }
 
         public void DefendAnimation(){
-            anim.Play("Defend");
+            ARModel.GetComponent<Animator>().Play("Defend");
         }
 
         public void DeathAnimation(){
-            anim.Play("Death");
+            ARModel.GetComponent<Animator>().Play("Death");
         }
 
         public void IdleAnimation(){
-            anim.Play("Idle");
+            ARModel.GetComponent<Animator>().Play("Idle");
         }
- 
-        void CardClass(Model model, Element element)
-        {
-            Factory(this.model, this.element);
-            anim = GetComponent<Animator>();
-        }
+
 
 
         

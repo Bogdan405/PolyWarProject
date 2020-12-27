@@ -76,9 +76,9 @@ namespace GameUserInterface{
             {
                 battlefieldShown = true;
                 Battlefield.SetActive(true);
-               // CardClass[] myCards = ;
-               // CardClass[] enemyCards = ;
-                //Battlefield.GetComponent<BattlefieldUI>().UpdateBattleFieldUI(myCards,enemyCards);
+                CardClass[] myCards = GameLogic.GetComponent<Board>().GetPersonalCards();
+                CardClass[] enemyCards = GameLogic.GetComponent<Board>().GetEnemyCards();
+                Battlefield.GetComponent<BattlefieldUI>().UpdateBattleFieldUI(myCards,enemyCards);
             }
         }
     }
