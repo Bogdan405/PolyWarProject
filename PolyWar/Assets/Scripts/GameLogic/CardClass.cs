@@ -45,6 +45,8 @@ namespace Card {
             {
                 this.life = 200;
                 this.damage = 75;
+               
+
             }
             else if (model == Model.Enchanter)
             {
@@ -71,6 +73,11 @@ namespace Card {
                 this.life = 200;
                 this.damage = 250;
             }   
+        }
+
+        public CardClass(Model model, Element element)
+        {
+            Factory(model, element);
         }
 
         public void SubstractLife(int damage)
@@ -136,7 +143,10 @@ namespace Card {
             ARModel.GetComponent<Animator>().Play("Idle");
         }
 
+        public CardClass()
+        {
 
+        }
 
         
     }
