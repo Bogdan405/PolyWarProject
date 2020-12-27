@@ -15,7 +15,8 @@ namespace GameUserInterface{
         public GameObject SurrenderButton;
         public GameObject EnemyHPButton;
         public GameObject MyHPButton;
-
+        public GameObject Battlefield;
+        private bool battlefieldShown = false;
         public void Start()
         {
             if (PhotonNetwork.InRoom) 
@@ -61,6 +62,19 @@ namespace GameUserInterface{
         {
             SSTools.ShowMessage("All players are ready!", SSTools.Position.middle, SSTools.Time.threeSecond);
         }
-
+        
+        public void OnClickBattlefield()
+        {
+            if (battlefieldShown)
+            {
+                battlefieldShown = false;
+                Battlefield.SetActive(false);
+            }         
+            else
+            {
+                battlefieldShown = true;
+                Battlefield.SetActive(true);
+            }
+        }
     }
 }
