@@ -2,31 +2,85 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Card { 
+namespace Card {
+
+    public enum Element
+    {
+        Automaton,
+        Undead,
+        Chemical,
+        Elemental
+    }
+
+    public enum Model
+    {
+        Sentry,
+        Enchanter,
+        Juggernaut,
+        Wraith,
+        LordMantis,
+        Berserk
+    }
+
 
     public class CardClass : MonoBehaviour
     {
 
-        public float life;
-        public float damage;
+        public int life;
+        public int damage;
         public string fullName;
+        public Model model;
         public Element element;
         public Animator anim;
 
-        public CardClass()
+        public void Factory(Model model, Element element)
         {
+            this.model = model;
+            this.element = element;
+            this.fullName = GetElement() + GetModel();
 
+
+            if (model == Model.Sentry)
+            {
+                this.life = 200;
+                this.damage = 75;
+            }
+            else if (model == Model.Enchanter)
+            {
+                this.life = 125;
+                this.damage = 75;
+            }
+            else if (model == Model.Juggernaut)
+            {
+                this.life = 350;
+                this.damage = 100;
+            }
+            else if (model == Model.Wraith)
+            {
+                this.life = 150;
+                this.damage = 100;
+            }
+            else if (model == Model.LordMantis)
+            {
+                this.life = 300;
+                this.damage = 200;
+            }
+            else // if (model == Model.Berserk)
+            {
+                this.life = 200;
+                this.damage = 250;
+            }   
         }
 
-        public void SubstractLife(float damage)
+        public void SubstractLife(int damage)
         {
             this.life = this.life - damage;
         }
-        public float GetLife()
+        public int GetLife()
         {
             return this.life;
         }
-        public float GetDamage()
+        public int GetDamage()
         {
             return this.damage;
         }
@@ -36,16 +90,21 @@ namespace Card {
             return this.fullName;
         }
 
-        public Element GetElement()
+        public string GetElement()
         {
-            return this.element;
+            return nameof(this.element);
         }
 
-        public void SetLife(float newLife)
+        public string GetModel()
+        {
+            return nameof(this.model);
+        }
+
+        public void SetLife(int newLife)
         {
             this.life = newLife;
         }
-        public void SetDamage(float newDamage)
+        public void SetDamage(int newDamage)
         {
             this.damage = newDamage;
         }
@@ -60,50 +119,39 @@ namespace Card {
             this.element = newElement;
         }
 
-        //De adaugat 3 functii
-        //fara implementare cel mai probabil
-        //cu fiecare animatie necesara
-
-
-
-
-        public void fullSet(float newDamage, float newLife, string newName, Element newElement)
-        {
-            this.SetDamage(newDamage);
-            this.SetLife(newLife);
-            this.SetName(newName);
-            this.SetElement(newElement);
+        public void AttackAnimation(){
+            anim.Play("Attack");
         }
 
+        public void DefendAnimation(){
+            anim.Play("Defend");
+            if (this.life <= 0)
+                anim.Play("Death");
+        }
+
+        //Just in case
+        public void DeathAnimation(){
+            anim.Play("Death");
+        }
+
+        public void IdleAnimation(){
+            anim.Play("Idle");
+        }
+ 
 
 
         void Start()
         {
+            Factory(this.model, this.element);
             anim = GetComponent<Animator>();
-            //Debug.Log("Defend");
-            //anim.Play("Defend");
+            //Debug.Log(this.fullName);
+            //Debug.Log(this.life);
+            //Debug.Log(this.damage);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetKeyDown("1"))
-            {
-            anim.Play("Attack");
-            }
-            else if (Input.GetKeyDown("2"))
-            {
-            anim.Play("Defend");
-            }
-            else if (Input.GetKeyDown("3"))
-            {
-              
-            anim.Play("Death");
-            }
-            else if (Input.GetKeyDown("4")) {
-            anim.Play("Idle");
-            }
-        // TODO pentru celelalte 3 animatii avem nevoie de triggere specifice
-        }
+  
+
+
+        
     }
 }
