@@ -105,8 +105,8 @@ public class Board : MonoBehaviour
         }
         else
         {
-            PhotonView boardPV = PhotonView.Get(this);
-            boardPV.RPC("ChangeTurn", RpcTarget.All);
+                PhotonView boardPV = PhotonView.Get(this);
+                boardPV.RPC("ChangeTurn", RpcTarget.Others);
         }
         if(this.GetComponent<Turn>().IsMyTurn()){
             playedCardThisTurn = false;
