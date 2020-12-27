@@ -125,11 +125,8 @@ namespace Card {
 
         public void DefendAnimation(){
             anim.Play("Defend");
-            if (this.life <= 0)
-                anim.Play("Death");
         }
 
-        //Just in case
         public void DeathAnimation(){
             anim.Play("Death");
         }
@@ -138,18 +135,11 @@ namespace Card {
             anim.Play("Idle");
         }
  
-
-
-        void Start()
+        void CardClass(Model model, Element element)
         {
             Factory(this.model, this.element);
             anim = GetComponent<Animator>();
-            //Debug.Log(this.fullName);
-            //Debug.Log(this.life);
-            //Debug.Log(this.damage);
         }
-
-  
 
 
         
