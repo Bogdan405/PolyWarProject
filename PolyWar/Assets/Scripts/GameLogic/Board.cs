@@ -84,7 +84,7 @@ public class Board : MonoBehaviour
     public void OnClickEndTurn()
     {
         PhotonView boardPV = PhotonView.Get(this);
-        boardPV.RPC("ResetPlayerTurn", RpcTarget.All);
+        boardPV.RPC("ResetPlayerTurn", RpcTarget.All, personalCards);
     }
 
 
