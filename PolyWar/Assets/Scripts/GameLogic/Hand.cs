@@ -31,7 +31,7 @@ namespace Card
 
         public void FillHand(Deck PlayerDeck)
         {
-            while (this.GetHandSize() < 5)
+            while (this.GetHandSize() < 5 && !PlayerDeck.DeckIsEmpty())
             {
                 this.AddCard(PlayerDeck);
             }
