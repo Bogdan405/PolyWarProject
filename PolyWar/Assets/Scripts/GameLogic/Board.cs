@@ -62,10 +62,16 @@ public class Board : MonoBehaviour
     }
 
     public void PlayCard()
-    {
+    {   
         // params position and card from AR taken
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
-        {
+        {   
+            if(personalHand.GetHandSize() == 0)
+            {
+                SSTools.ShowMessage("No more cards!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+                return;
+            }
+            
             Pair card = personalHand.GetCard(0);
             personalCards[0].Factory(card.model, card.element);
             playedCardsThisTurn ++;
@@ -106,6 +112,7 @@ public class Board : MonoBehaviour
     public void OnClickEndTurn()
     {
         PhotonView boardPV = PhotonView.Get(this);
+        personalHand.FillHand(personalDeck);
         boardPV.RPC("ResetPlayerTurn", RpcTarget.All,
             (byte)personalCards[0].MGetModel(), (byte)personalCards[0].EGetElement(), personalCards[0].GetLife(), personalCards[0].IsEmpty(),
             (byte)personalCards[1].MGetModel(), (byte)personalCards[1].EGetElement(), personalCards[1].GetLife(), personalCards[1].IsEmpty(),
