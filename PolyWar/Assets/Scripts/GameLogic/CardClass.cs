@@ -114,6 +114,14 @@ namespace Card {
             return this.model.ToString();
         }
 
+        public Model MGetModel()
+        {
+            return this.model;
+        }
+        public Element EGetElement()
+        {
+            return this.element;
+        }
         public void SetLife(int newLife)
         {
             this.life = newLife;
