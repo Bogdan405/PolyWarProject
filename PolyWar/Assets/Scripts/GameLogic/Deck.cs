@@ -27,13 +27,13 @@ public class Deck
         }
 
     }
-
-    public pair GetNextCard()
+    /*
+    public Pair GetNextCard()
     {
-        pair TheCard = this.cards.ElementAt(0);
+        Pair TheCard = this.cards.ElementAt(0);
         this.cards.RemoveAt(0);
         return TheCard;
-    }
+    }*/
 
     public Pair GenerateOneMinion()
     {
