@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
 using Card;
@@ -21,6 +22,8 @@ namespace GameUserInterface{
         public GameObject GameLogic;
         public GameObject EndTurn;
         public GameObject PlayCard;
+        public GameObject SelectedButton;
+        public GameObject selectedButtonText;
         private bool battlefieldShown = false;
         public void Start()
         {
@@ -48,6 +51,7 @@ namespace GameUserInterface{
             ShowButton.SetActive(true);
             SetEndTurnButton(false);
             PlayCard.SetActive(false);
+            SelectedButton.SetActive(false);
         }
 
         public void SetEndTurnButton(bool value)
@@ -58,6 +62,16 @@ namespace GameUserInterface{
         public void SetPlayCard(bool value)
         {
             PlayCard.SetActive(value);
+        }
+
+        public void SetSelectedButton(bool value)
+        {
+            SelectedButton.SetActive(value);
+        }
+
+        public void UpdateSelectedButton(string cardName)
+        {
+            selectedButtonText.GetComponent<Text>().text = "Selected Card: \n" + cardName;
         }
 
         public void setShowButton(bool value)
@@ -74,6 +88,7 @@ namespace GameUserInterface{
             SurrenderButton.SetActive(true);
             EnemyHPButton.SetActive(true);
             MyHPButton.SetActive(true);
+            SelectedButton.SetActive(true);
             ShowButton.SetActive(false);
             if (GameLogic.GetComponent<Turn>().IsMyTurn())
             {

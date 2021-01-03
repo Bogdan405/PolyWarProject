@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
     private CardClass[] personalCards;
     private int playedCardsThisTurn;
     public GameObject UI;
+    public GameObject AR;
     private int turnCounter;
     private Deck personalDeck;
     private Hand personalHand;
@@ -62,12 +63,23 @@ public class Board : MonoBehaviour
     }
 
     public void PlayCard()
-    {
-        // params position and card from AR taken
+    {   
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
-        {
-            Pair card = personalHand.GetCard(0);
-            personalCards[0].Factory(card.model, card.element);
+        {   
+            if(personalHand.GetHandSize() == 0)
+            {
+                SSTools.ShowMessage("No more cards!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+                return;
+            }
+            int cardPos = AR.GetComponent<ImageDetectionScript>().GetSelectedCard();
+            int fieldPos = AR.GetComponent<ImageDetectionScript>().GetSelectedField();
+            if( cardPos == -1 || fieldPos == -1)
+            {
+                SSTools.ShowMessage("Field or Card not selected!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+                return;
+            }
+            Pair card = personalHand.GetCard(cardPos);
+            personalCards[fieldPos].Factory(card.model, card.element);
             playedCardsThisTurn ++;
             UI.GetComponent<GameUI>().SetEndTurnButton(true);
             if(playedCardsThisTurn == 3)
@@ -106,6 +118,7 @@ public class Board : MonoBehaviour
     public void OnClickEndTurn()
     {
         PhotonView boardPV = PhotonView.Get(this);
+        personalHand.FillHand(personalDeck);
         boardPV.RPC("ResetPlayerTurn", RpcTarget.All,
             (byte)personalCards[0].MGetModel(), (byte)personalCards[0].EGetElement(), personalCards[0].GetLife(), personalCards[0].IsEmpty(),
             (byte)personalCards[1].MGetModel(), (byte)personalCards[1].EGetElement(), personalCards[1].GetLife(), personalCards[1].IsEmpty(),

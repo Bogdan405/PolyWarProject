@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: HandLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5082046282267650924
+  m_GuidHigh: 1791372672983634065
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4843254841959567020
+      m_GuidHigh: 2542529349041362609
+    m_SerializedTextureGuid:
+      m_GuidLow: 11845825677946866865
+      m_GuidHigh: 13757143969128444282
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4765384166397056666
+      m_GuidHigh: 9342093048542357387
+    m_SerializedTextureGuid:
+      m_GuidLow: 775974261101212027
+      m_GuidHigh: 16952345075404167914
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4857559451489849177
+      m_GuidHigh: 12024966127966258576
+    m_SerializedTextureGuid:
+      m_GuidLow: 15952992415931521066
+      m_GuidHigh: 17671990878578043384
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4841554742814303098
+      m_GuidHigh: 2441046731809185461
+    m_SerializedTextureGuid:
+      m_GuidLow: 6801581947093143418
+      m_GuidHigh: 8001018216849372091
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5625966679565701764
+      m_GuidHigh: 2359589519254026922
+    m_SerializedTextureGuid:
+      m_GuidLow: 9778599561548724623
+      m_GuidHigh: 6383014755414176377
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card5
+    m_Texture: {fileID: 0}

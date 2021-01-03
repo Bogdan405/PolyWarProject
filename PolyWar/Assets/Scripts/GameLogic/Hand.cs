@@ -8,35 +8,43 @@ namespace Card
 {
     public class Hand
     {
-        List<Pair> HandCards = new List<Pair>();
+        Pair[] HandCards = {null,null,null,null,null};
 
 
         public int GetHandSize()
         {
-            return this.HandCards.Count;
+            int counter=5;
+            for (int index = 0; index < 5; index++)
+            {
+                if (HandCards[index] == null)
+                {
+                    counter--;
+                }
+            }
+            return counter;
         }
 
-        public void AddCard(Deck PlayerDeck)
+        public void AddCard(int index,Deck PlayerDeck)
         {
-            if (!PlayerDeck.DeckIsEmpty())
-            {
-                HandCards.Add(PlayerDeck.GetNextCard());
-            }
+            HandCards[index] = PlayerDeck.GetNextCard();
         }
 
         public Pair GetCard(int number)
         {
-            Pair TheCard = this.HandCards.ElementAt(number);
-            this.HandCards.RemoveAt(number);
+            Pair TheCard = HandCards[number];
+            HandCards[number] = null;
             return TheCard;
 
         }
 
         public void FillHand(Deck PlayerDeck)
         {
-            while (this.GetHandSize() < 5)
+            for(int index = 0; index < 5; index++)
             {
-                this.AddCard(PlayerDeck);
+                if(HandCards[index] == null)
+                {
+                    AddCard(index, PlayerDeck);
+                }
             }
         }
     }
