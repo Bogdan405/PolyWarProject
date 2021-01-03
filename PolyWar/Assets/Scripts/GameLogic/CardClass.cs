@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
-
-
 namespace Card {
 
-    public enum Element
+    public enum Element : byte
     {
-        Automaton,
-        Undead,
-        Chemical,
-        Elemental
+        Automaton = 0,
+        Undead = 1,
+        Chemical = 2,
+        Elemental = 3
     }
 
-    public enum Model
+    public enum Model : byte
     {
-        Sentry,
-        Enchanter,
-        Juggernaut,
-        Wraith,
-        LordMantis,
-        Berserk
+        Sentry = 0,
+        Enchanter = 1,
+        Juggernaut = 2, 
+        Wraith = 3,
+        LordMantis = 4,
+        Berserk = 5
     }
 
 
@@ -159,6 +157,5 @@ namespace Card {
         public void IdleAnimation(){
             ARModel.GetComponent<Animator>().Play("Idle");
         }
-        
     }
 }

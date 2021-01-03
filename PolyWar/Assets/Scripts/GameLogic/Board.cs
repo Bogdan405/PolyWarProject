@@ -84,7 +84,10 @@ public class Board : MonoBehaviour
     public void OnClickEndTurn()
     {
         PhotonView boardPV = PhotonView.Get(this);
-        boardPV.RPC("ResetPlayerTurn", RpcTarget.All, personalCards);
+        boardPV.RPC("ResetPlayerTurn", RpcTarget.All,
+            personalCards[0].GetModel(), personalCards[0].GetElement(), personalCards[0].GetLife(), personalCards[0].IsEmpty(),
+            personalCards[1].GetModel(), personalCards[1].GetElement(), personalCards[1].GetLife(), personalCards[1].IsEmpty(),
+            personalCards[2].GetModel(), personalCards[2].GetElement(), personalCards[2].GetLife(), personalCards[2].IsEmpty());
     }
 
 
@@ -101,11 +104,25 @@ public class Board : MonoBehaviour
     }
 
     [PunRPC]
-    public void ResetPlayerTurn(CardClass[] cardsModified)
+    public void ResetPlayerTurn(Model m1, Element el1,int life1,bool empty1, Model m2, Element el2, int life2, bool empty2, Model m3, Element el3, int life3, bool empty3)
     {
         if (!this.GetComponent<Turn>().IsMyTurn())
         {
-            enemyCards = cardsModified;
+            if (!empty1)
+            {
+                enemyCards[0].Factory(m1, el1);
+                enemyCards[0].SetLife(life1);
+            }
+            if (!empty2)
+            {
+                enemyCards[1].Factory(m2, el2);
+                enemyCards[1].SetLife(life2);
+            }
+            if (!empty3)
+            {
+                enemyCards[2].Factory(m3, el3);
+                enemyCards[2].SetLife(life3);
+            }
         }
         turnCounter++;
         if(turnCounter % 2 == 0)
