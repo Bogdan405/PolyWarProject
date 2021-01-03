@@ -6,6 +6,7 @@ using UnityEngine.XR.ARFoundation;
 using Photon.Realtime;
 using Photon.Pun;
 using UnityEngine.XR.ARSubsystems;
+using GameUserInterface;
 public class ImageDetectionScript : MonoBehaviour
 {
     private ARTrackedImageManager _arTrackedImageManager;
