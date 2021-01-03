@@ -16,7 +16,7 @@ public class HP : MonoBehaviour
     public GameObject exitText;
     public GameObject UI;
     public GameObject exitPanel;
-
+    public GameObject connection;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +74,7 @@ public class HP : MonoBehaviour
         enemyHPText.GetComponent<Text>().text = this.GetComponent<PlayerNames>().GetOpponentsName() +"'s HP\n" + enemyHP;
         if(personalHP == 0 && enemyHP == 0)
         {
-            PhotonView connPV = PhotonView.Get(this);
+            PhotonView connPV = PhotonView.Get(connection);
             connPV.RPC("ExitGame", RpcTarget.Others, "Draw!");
             Text exitString = exitText.GetComponent<Text>();
             exitString.text = "Draw!";
@@ -82,7 +82,7 @@ public class HP : MonoBehaviour
         }
         if (personalHP == 0 && enemyHP > 0)
         {
-            PhotonView connPV = PhotonView.Get(this);
+            PhotonView connPV = PhotonView.Get(connection);
             connPV.RPC("ExitGame", RpcTarget.Others, "You won!");
             Text exitString = exitText.GetComponent<Text>();
             exitString.text = "You lost!";
@@ -90,7 +90,7 @@ public class HP : MonoBehaviour
         }
         if (enemyHP == 0 && personalHP > 0)
         {
-            PhotonView connPV = PhotonView.Get(this);
+            PhotonView connPV = PhotonView.Get(connection);
             connPV.RPC("ExitGame", RpcTarget.Others, "You lost!");
             Text exitString = exitText.GetComponent<Text>();
             exitString.text = "You won!";

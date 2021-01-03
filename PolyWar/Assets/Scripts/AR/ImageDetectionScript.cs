@@ -16,6 +16,7 @@ public class ImageDetectionScript : MonoBehaviour
     public GameObject UI;
     public GameObject connection;
     public GameObject gameLogic;
+    private bool lookingAtHand = false;
 
     private void Awake()
     {
@@ -68,4 +69,8 @@ public class ImageDetectionScript : MonoBehaviour
         
     }
 
+    public void SetHandLook()
+    {
+        lookingAtHand = true;
+    }
 }
