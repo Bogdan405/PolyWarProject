@@ -37,12 +37,12 @@ public class HP : MonoBehaviour
         enemyHP = value;
     }
 
-    static int GetPersonalHP()
+    public static int GetPersonalHP()
     {
         return personalHP;
     }
 
-    static int GetEnemyHP()
+    public static int GetEnemyHP()
     {
         return enemyHP;
     }

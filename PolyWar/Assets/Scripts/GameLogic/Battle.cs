@@ -6,11 +6,12 @@ using Card;
 namespace Card { 
     public class Battle
     {
-        public static void CommitBattle(CardClass firstCard, CardClass secondCard)
+        public static int[] CommitBattle(CardClass firstCard, CardClass secondCard)
         {
-            secondCard.SubstractLife(CalculateDamage(firstCard.damage, firstCard.element, secondCard.element));
-            firstCard.SubstractLife(CalculateDamage(secondCard.damage, secondCard.element, firstCard.element));
-
+            int[] life_reductions = { 0, 0 };
+            life_reductions[1] = secondCard.SubstractLife(CalculateDamage(firstCard.damage, firstCard.element, secondCard.element));
+            life_reductions[0] = firstCard.SubstractLife(CalculateDamage(secondCard.damage, secondCard.element, firstCard.element));
+            return life_reductions;
         }
 
         public static int CalculateDamage(int damage, Element elementDealing, Element elementReceiving)

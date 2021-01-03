@@ -86,9 +86,14 @@ namespace Card {
             empty = true;
         }
 
-        public void SubstractLife(int damage)
+        public int SubstractLife(int damage)
         {
             this.life = this.life - damage;
+            if(this.life < 0)
+            {
+                return -1 * this.life;
+            }
+            return 0;
         }
         public int GetLife()
         {
@@ -149,6 +154,11 @@ namespace Card {
         public bool IsEmpty()
         {
             return empty;
+        }
+
+        public bool IsAlive()
+        {
+            return this.life > 0;
         }
         public void AttackAnimation(){
             ARModel.GetComponent<Animator>().Play("Attack");

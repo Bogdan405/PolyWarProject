@@ -82,10 +82,26 @@ public class Board : MonoBehaviour
         HideUI();
         for (int place = 0; place < 3; place++)
         {
-            Battle.CommitBattle(personalCards[place], enemyCards[place]);
+
+            int[] life_decrease = Battle.CommitBattle(personalCards[place], enemyCards[place]);
+            if (this.GetComponent<Turn>().IsMyTurn())
+            {
+                this.GetComponent<HP>().UpdateHPValues(HP.GetPersonalHP() - life_decrease[0], HP.GetEnemyHP() - life_decrease[1]);
+            }
+            
+            
+            if (!personalCards[place].IsAlive())
+            {
+                personalCards[place].SetEmpty();
+            }
+            if (!enemyCards[place].IsAlive())
+            {
+                enemyCards[place].SetEmpty();
+            }
         }
         ShowUI();
     }
+
 
     public void OnClickEndTurn()
     {
