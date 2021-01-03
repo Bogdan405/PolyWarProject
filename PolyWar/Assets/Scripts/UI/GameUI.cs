@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 using Card;
+using PlayerTurn;
 
 namespace GameUserInterface{ 
     public class GameUI : MonoBehaviour
@@ -74,17 +75,20 @@ namespace GameUserInterface{
             EnemyHPButton.SetActive(true);
             MyHPButton.SetActive(true);
             ShowButton.SetActive(false);
-            PlayCard.SetActive(true);
-            if (GameLogic.GetComponent<Board>().GetPlayedCardThisTurn() > 0)
+            if (GameLogic.GetComponent<Turn>().IsMyTurn())
             {
-                SetEndTurnButton(true);
-                if (GameLogic.GetComponent<Board>().GetPlayedCardThisTurn() == 3)
+                PlayCard.SetActive(true);
+                if (GameLogic.GetComponent<Board>().GetPlayedCardThisTurn() > 0)
                 {
-                    PlayCard.SetActive(false);
-                }
+                    SetEndTurnButton(true);
+                    if (GameLogic.GetComponent<Board>().GetPlayedCardThisTurn() == 3)
+                    {
+                        PlayCard.SetActive(false);
+                    }
                 
+                }
             }
-            
+
         }
         
 

@@ -13,9 +13,10 @@ namespace PlayerTurn {
     {   
         private enum TurnType{
             MasterTurn,
-            NotMasterTurn
+            NotMasterTurn,
+            None
         }
-        private TurnType currentTurn;
+        private TurnType currentTurn = TurnType.None;
         public GameObject turnPanel;
 
         public void OnClickInitTurns()
