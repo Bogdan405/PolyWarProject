@@ -15,6 +15,11 @@ public class GameNetwork : MonoBehaviour
     public GameObject exitText;
     public GameObject gameLogic;
 
+    public void OnClickUpdateReadyPlayers()
+    {
+        PhotonView gamePV = PhotonView.Get(this);
+        gamePV.RPC("updateReadyPlayers", RpcTarget.All);
+    }
 
     [PunRPC]
     public void updateReadyPlayers()
