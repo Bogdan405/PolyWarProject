@@ -11,7 +11,7 @@ namespace Card
         List<Pair> HandCards = new List<Pair>();
 
 
-        public int GetLength()
+        public int GetHandSize()
         {
             return this.HandCards.Count;
         }
@@ -27,6 +27,14 @@ namespace Card
             this.HandCards.RemoveAt(number);
             return TheCard;
 
+        }
+
+        public void FillHand(Deck PlayerDeck)
+        {
+            while (this.GetHandSize() < 5)
+            {
+                this.AddCard(PlayerDeck);
+            }
         }
     }
 }

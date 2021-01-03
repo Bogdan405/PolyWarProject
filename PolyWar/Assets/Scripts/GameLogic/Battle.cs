@@ -10,6 +10,7 @@ namespace Card {
         {
             secondCard.SubstractLife(CalculateDamage(firstCard.damage, firstCard.element, secondCard.element));
             firstCard.SubstractLife(CalculateDamage(secondCard.damage, secondCard.element, firstCard.element));
+
         }
 
         public static int CalculateDamage(int damage, Element elementDealing, Element elementReceiving)

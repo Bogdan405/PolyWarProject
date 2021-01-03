@@ -6,7 +6,7 @@ using Photon.Realtime;
 using Photon.Pun;
 using GameUserInterface;
 using PlayerTurn;
-
+using Pairs;
 public class Board : MonoBehaviour
 {
     private CardClass[] enemyCards;
@@ -14,6 +14,8 @@ public class Board : MonoBehaviour
     private int playedCardsThisTurn;
     public GameObject UI;
     private int turnCounter;
+    private Deck personalDeck;
+    private Hand personalHand;
     void Start()
     {
         enemyCards = new CardClass[3];
@@ -28,6 +30,8 @@ public class Board : MonoBehaviour
         personalCards[0] = new CardClass();
         personalCards[1] = new CardClass();
         personalCards[2] = new CardClass();
+        personalDeck = new Deck();
+        personalDeck.GenerateDeck();
     }
 
     public CardClass[] GetEnemyCards()
@@ -60,7 +64,8 @@ public class Board : MonoBehaviour
         // params position and card from AR taken
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
         {
-            personalCards[0].Factory(Model.Sentry, Element.Chemical);
+            Pair card = personalDeck.GetNextCard();
+            personalCards[0].Factory(card.model, card.element);
             playedCardsThisTurn ++;
             UI.GetComponent<GameUI>().SetEndTurnButton(true);
             if(playedCardsThisTurn == 3)
@@ -72,7 +77,6 @@ public class Board : MonoBehaviour
 
     public void Fight()
     {
-        //Animations for AR
         HideUI();
         for (int place = 0; place < 3; place++)
         {
@@ -138,7 +142,7 @@ public class Board : MonoBehaviour
         }
         else
         {
-            UI.GetComponent<GameUI>().SetPlayCard(true);
+            UI.GetComponent<GameUI>().SetPlayCard(false);
         }
     }
 }

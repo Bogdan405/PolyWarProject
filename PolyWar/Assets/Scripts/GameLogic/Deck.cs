@@ -28,7 +28,7 @@ public class Deck
         }
 
     }
-    
+
     public Pair GetNextCard()
     {
         Pair TheCard = this.cards.ElementAt(0);
@@ -80,39 +80,39 @@ public class Deck
         return general1;
     }
 
-    public void AddGenerals(){
+    public void AddGenerals() {
         System.Random rnd = new System.Random();
         Pair general1;
-        int general  = rnd.Next(1, 9);
-        
-        if(general == 1){general1 = new Pair(Model.LordMantis, Element.Automaton);}
-        else if(general == 2){general1 = new Pair(Model.LordMantis, Element.Elemental);}
-        else if(general == 3){general1 = new Pair   (Model.LordMantis, Element.Chemical);}
-        else if(general == 4){general1 = new Pair(Model.LordMantis, Element.Undead);}
-        else if(general == 5){general1 = new Pair(Model.Berserk, Element.Automaton);}
-        else if(general == 6){general1 = new Pair(Model.Berserk, Element.Elemental);}
-        else if(general == 7){general1 = new Pair(Model.Berserk, Element.Chemical);}
-        else {general1 = new Pair(Model.Berserk, Element.Undead);}
-        
+        int general = rnd.Next(1, 9);
+
+        if (general == 1) { general1 = new Pair(Model.LordMantis, Element.Automaton); }
+        else if (general == 2) { general1 = new Pair(Model.LordMantis, Element.Elemental); }
+        else if (general == 3) { general1 = new Pair(Model.LordMantis, Element.Chemical); }
+        else if (general == 4) { general1 = new Pair(Model.LordMantis, Element.Undead); }
+        else if (general == 5) { general1 = new Pair(Model.Berserk, Element.Automaton); }
+        else if (general == 6) { general1 = new Pair(Model.Berserk, Element.Elemental); }
+        else if (general == 7) { general1 = new Pair(Model.Berserk, Element.Chemical); }
+        else { general1 = new Pair(Model.Berserk, Element.Undead); }
+
         cards.Add(general1);
-        
-        general  = rnd.Next(1, 9);
+
+        general = rnd.Next(1, 9);
         Pair general2;
 
-        if (general == 1){general2 = new Pair(Model.LordMantis, Element.Automaton);}
-        else if(general == 2){general2 = new Pair(Model.LordMantis, Element.Elemental);}
-        else if(general == 3){general2 = new Pair(Model.LordMantis, Element.Chemical);}
-        else if(general == 4){general2 = new Pair(Model.LordMantis, Element.Undead);}
-        else if(general == 5){general2 = new Pair(Model.Berserk, Element.Automaton);}
-        else if(general == 6){general2 = new Pair(Model.Berserk, Element.Elemental);}
-        else if(general == 7){general2 = new Pair(Model.Berserk, Element.Chemical);}
-        else{general2 = new Pair(Model.Berserk, Element.Undead);}
+        if (general == 1) { general2 = new Pair(Model.LordMantis, Element.Automaton); }
+        else if (general == 2) { general2 = new Pair(Model.LordMantis, Element.Elemental); }
+        else if (general == 3) { general2 = new Pair(Model.LordMantis, Element.Chemical); }
+        else if (general == 4) { general2 = new Pair(Model.LordMantis, Element.Undead); }
+        else if (general == 5) { general2 = new Pair(Model.Berserk, Element.Automaton); }
+        else if (general == 6) { general2 = new Pair(Model.Berserk, Element.Elemental); }
+        else if (general == 7) { general2 = new Pair(Model.Berserk, Element.Chemical); }
+        else { general2 = new Pair(Model.Berserk, Element.Undead); }
 
-        
+
         cards.Add(general2);
     }
 
-    public void AddMinions(){
+    public void AddMinions() {
 
         System.Random rnd = new System.Random();
 
@@ -138,10 +138,20 @@ public class Deck
             else if (potato == 14) { potatoCard = new Pair(Model.Wraith, Element.Elemental); }
             else if (potato == 15) { potatoCard = new Pair(Model.Wraith, Element.Chemical); }
             else { potatoCard = new Pair(Model.Wraith, Element.Undead); }
-            
+
             cards.Add(potatoCard);
         }
     }
- 
+
+    public bool DeckIsEmpty()
+    {
+        return this.cards.Count == 0;
+    }
+
+    public int GetDeckSize()
+    {
+        return this.cards.Count;
+    }
+
 
 }
