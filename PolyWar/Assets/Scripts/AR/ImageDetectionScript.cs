@@ -108,6 +108,7 @@ public class ImageDetectionScript : MonoBehaviour
             {
                 lastSelectedCard = trackedImage.referenceImage.name;
             }
+            UI.GetComponent<GameUI>().UpdateSelectedButton(lastSelectedCard);
         }
         else
         {
@@ -119,6 +120,7 @@ public class ImageDetectionScript : MonoBehaviour
             {
                 lastSelectedField = trackedImage.referenceImage.name;
             }
+            UI.GetComponent<GameUI>().UpdateSelectedButton(lastSelectedField);
         }
         
     }
