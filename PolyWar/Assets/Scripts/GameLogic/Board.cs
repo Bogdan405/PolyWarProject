@@ -32,6 +32,8 @@ public class Board : MonoBehaviour
         personalCards[2] = new CardClass();
         personalDeck = new Deck();
         personalDeck.GenerateDeck();
+        personalHand = new Hand();
+        personalHand.FillHand(personalDeck);
     }
 
     public CardClass[] GetEnemyCards()
@@ -64,7 +66,7 @@ public class Board : MonoBehaviour
         // params position and card from AR taken
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
         {
-            Pair card = personalDeck.GetNextCard();
+            Pair card = personalHand.GetCard(0);
             personalCards[0].Factory(card.model, card.element);
             playedCardsThisTurn ++;
             UI.GetComponent<GameUI>().SetEndTurnButton(true);
