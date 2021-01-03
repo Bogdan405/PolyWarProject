@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
 using PlayerName;
+using GameUserInterface;
 public class HP : MonoBehaviour
 {
     private const int startingHP = 1000;
@@ -12,6 +13,10 @@ public class HP : MonoBehaviour
     public static int enemyHP;
     public GameObject personalHPText;
     public GameObject enemyHPText;
+    public GameObject gameNetwork;
+    public GameObject exitText;
+    public GameObject UI;
+    public GameObject exitPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +29,7 @@ public class HP : MonoBehaviour
 
     public void OnClicktestLowerHP()
     {
-        UpdateHPValues(personalHP - 1, enemyHP - 1);
+        UpdateHPValues(personalHP - 999, enemyHP - 999);
     }
 
     static void SetPersonalHP(int value)
@@ -58,8 +63,48 @@ public class HP : MonoBehaviour
 
     public void UpdateDisplayedHP()
     {
+        if(personalHP < 0)
+        {
+            personalHP = 0;
+        }
+        if(enemyHP < 0)
+        {
+            enemyHP = 0;
+        }
         personalHPText.GetComponent<Text>().text = this.GetComponent<PlayerNames>().GetMyName()+ "'s HP\n" + personalHP;
         enemyHPText.GetComponent<Text>().text = this.GetComponent<PlayerNames>().GetOpponentsName() +"'s HP\n" + enemyHP;
+        if(personalHP == 0 && enemyHP == 0)
+        {
+            PhotonView connPV = PhotonView.Get(gameNetwork);
+            connPV.RPC("ExitGame", RpcTarget.Others, "Draw!");
+            Text exitString = exitText.GetComponent<Text>();
+            exitString.text = "Draw!";
+            HideUIOnGameEnd();
+        }
+        if (personalHP == 0 && enemyHP > 0)
+        {
+            PhotonView connPV = PhotonView.Get(gameNetwork);
+            connPV.RPC("ExitGame", RpcTarget.Others, "You won!");
+            Text exitString = exitText.GetComponent<Text>();
+            exitString.text = "You lost!";
+            HideUIOnGameEnd();
+        }
+        if (enemyHP == 0 && personalHP > 0)
+        {
+            PhotonView connPV = PhotonView.Get(gameNetwork);
+            connPV.RPC("ExitGame", RpcTarget.Others, "You lost!");
+            Text exitString = exitText.GetComponent<Text>();
+            exitString.text = "You won!";
+            HideUIOnGameEnd();
+        }
+    }
+
+    public void HideUIOnGameEnd()
+    {
+        exitPanel.SetActive(true);
+        GameUI gameUI = UI.GetComponent<GameUI>();
+        gameUI.OnClickHideUI();
+        gameUI.setShowButton(false);
     }
 
     [PunRPC]
