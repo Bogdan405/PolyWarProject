@@ -19,5 +19,16 @@ public class BattlefieldCardUI : MonoBehaviour
             attack.GetComponent<Text>().text = card.GetDamage().ToString();
             life.GetComponent<Text>().text = card.GetLife().ToString();
         }
+        else
+        {
+            GameObject element = this.transform.GetChild(0).gameObject;
+            GameObject type = this.transform.GetChild(1).gameObject;
+            GameObject attack = this.transform.GetChild(2).gameObject;
+            GameObject life = this.transform.GetChild(3).gameObject;
+            element.GetComponent<Text>().text = "";
+            type.GetComponent<Text>().text = "";
+            attack.GetComponent<Text>().text = "";
+            life.GetComponent<Text>().text = "";
+        }
     }
 }
