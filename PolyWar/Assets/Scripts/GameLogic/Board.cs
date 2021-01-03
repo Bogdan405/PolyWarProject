@@ -63,7 +63,6 @@ public class Board : MonoBehaviour
 
     public void PlayCard()
     {   
-        // params position and card from AR taken
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
         {   
             if(personalHand.GetHandSize() == 0)
@@ -71,7 +70,7 @@ public class Board : MonoBehaviour
                 SSTools.ShowMessage("No more cards!", SSTools.Position.bottom, SSTools.Time.twoSecond);
                 return;
             }
-            
+            SSTools.ShowMessage("No more cards!", SSTools.Position.bottom, SSTools.Time.twoSecond);
             Pair card = personalHand.GetCard(0);
             personalCards[0].Factory(card.model, card.element);
             playedCardsThisTurn ++;

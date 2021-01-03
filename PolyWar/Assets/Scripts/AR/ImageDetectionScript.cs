@@ -72,5 +72,11 @@ public class ImageDetectionScript : MonoBehaviour
     public void SetHandLook()
     {
         lookingAtHand = true;
+        _arTrackedImageManager.referenceLibrary = handLibrary;
+    }
+
+    public void SetFieldLook()
+    {
+        lookingAtHand = false;
     }
 }
