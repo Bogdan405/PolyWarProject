@@ -6352,8 +6352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a8de707f7596644a79d1f4c808638c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fieldLibrary: {fileID: 11400000, guid: 50ac3a59305b594438c4e8883d977f8d, type: 2}
+  handLibrary: {fileID: 11400000, guid: 8ba69a20168a564449663d4fd0414b41, type: 2}
   UI: {fileID: 1369081536}
   connection: {fileID: 171987819}
+  gameLogic: {fileID: 1400664297}
 --- !u!114 &2017586501
 MonoBehaviour:
   m_ObjectHideFlags: 0
