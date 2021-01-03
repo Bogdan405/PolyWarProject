@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Card;
+using System.Linq;
 using System;
 using Pairs;
 
@@ -27,13 +28,13 @@ public class Deck
         }
 
     }
-    /*
+    
     public Pair GetNextCard()
     {
         Pair TheCard = this.cards.ElementAt(0);
         this.cards.RemoveAt(0);
         return TheCard;
-    }*/
+    }
 
     public Pair GenerateOneMinion()
     {
