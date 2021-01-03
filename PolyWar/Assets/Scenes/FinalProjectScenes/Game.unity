@@ -3273,8 +3273,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400664300}
-        m_MethodName: OnClickInitTurns
+      - m_Target: {fileID: 171987821}
+        m_MethodName: updateReadyPlayers
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
