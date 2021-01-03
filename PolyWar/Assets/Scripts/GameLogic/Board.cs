@@ -134,6 +134,11 @@ public class Board : MonoBehaviour
 
         if(this.GetComponent<Turn>().IsMyTurn()){
             playedCardsThisTurn = 0;
+            UI.GetComponent<GameUI>().SetPlayCard(true);    
+        }
+        else
+        {
+            UI.GetComponent<GameUI>().SetPlayCard(true);
         }
     }
 }
