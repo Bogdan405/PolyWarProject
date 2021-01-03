@@ -2359,80 +2359,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &751786115
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9999
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9999
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -9999
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_Name
-      value: AutomatonEnchanter
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: ffe90d8b0db430c48b7153d7339b52fd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ffe90d8b0db430c48b7153d7339b52fd, type: 3}
 --- !u!1 &789964000
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,6 +4021,7 @@ MonoBehaviour:
   GameLogic: {fileID: 1400664297}
   EndTurn: {fileID: 659781847}
   PlayCard: {fileID: 1456385350}
+  SelectedButton: {fileID: 1889292342}
 --- !u!114 &1369081540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4422,6 +4349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnPanel: {fileID: 1787689634}
+  UI: {fileID: 0}
 --- !u!114 &1400664301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6258,7 +6186,7 @@ GameObject:
   - component: {fileID: 1889292345}
   - component: {fileID: 1889292344}
   m_Layer: 0
-  m_Name: ChangeARLook (1)
+  m_Name: SelectedCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
