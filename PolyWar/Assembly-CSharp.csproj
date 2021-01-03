@@ -307,6 +307,7 @@
      <Compile Include="Assets\Scripts\Network\Test\ConnectToRoom.cs" />
      <Compile Include="Assets\Scripts\Network\Test\MessageConsoleScript.cs" />
      <Compile Include="Assets\Scripts\Network\Test\PlayerPlateScript.cs" />
+     <Compile Include="Assets\Scripts\UI\ARUIScript.cs" />
      <Compile Include="Assets\Scripts\UI\BattlefieldCardUI.cs" />
      <Compile Include="Assets\Scripts\UI\BattlefieldUI.cs" />
      <Compile Include="Assets\Scripts\UI\GameUI.cs" />

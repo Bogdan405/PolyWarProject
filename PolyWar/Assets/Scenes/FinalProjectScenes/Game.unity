@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 225, y: 210}
-  m_SizeDelta: {x: 450, y: 125}
+  m_AnchoredPosition: {x: 100, y: 196}
+  m_SizeDelta: {x: 200, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11197726
 MonoBehaviour:
@@ -202,7 +202,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11197727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1369081541}
+        m_MethodName: OnClickChangeLook
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &11197727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3963,6 +3974,7 @@ GameObject:
   - component: {fileID: 1369081537}
   - component: {fileID: 1369081539}
   - component: {fileID: 1369081540}
+  - component: {fileID: 1369081541}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -4044,6 +4056,20 @@ MonoBehaviour:
   viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1369081541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369081536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f78d650e359d4469d08ed6fe96b2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ARLookButton: {fileID: 11197724}
+  AR: {fileID: 2017586497}
 --- !u!1 &1380941125
 GameObject:
   m_ObjectHideFlags: 0
@@ -4393,6 +4419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1369081536}
+  AR: {fileID: 2017586497}
 --- !u!1 &1415640785
 GameObject:
   m_ObjectHideFlags: 0

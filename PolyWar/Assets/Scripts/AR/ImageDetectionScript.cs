@@ -17,7 +17,39 @@ public class ImageDetectionScript : MonoBehaviour
     public GameObject connection;
     public GameObject gameLogic;
     private bool lookingAtHand = false;
+    private string lastSelectedCard = null;
+    private string lastSelectedField = null;
 
+    public int GetSelectedCard()
+    {
+        if (string.Compare(lastSelectedCard,"Card1") == 0)
+            return 0;
+        if (string.Compare(lastSelectedCard, "Card2") == 0)
+            return 1;
+        if (string.Compare(lastSelectedCard, "Card3") == 0)
+            return 2;
+        if (string.Compare(lastSelectedCard, "Card4") == 0)
+            return 3;
+        if (string.Compare(lastSelectedCard, "Card5") == 0)
+            return 4;
+        return -1;
+    }
+
+    public int GetSelectedField()
+    {
+        if (string.Compare(lastSelectedCard, "Owl") == 0)
+            return 0;
+        if (string.Compare(lastSelectedCard, "Eagle") == 0)
+            return 1;
+        if (string.Compare(lastSelectedCard, "Snake") == 0)
+            return 2;
+        return -1;
+    }
+
+    public string GetSelectedFieldString()
+    {
+        return lastSelectedField;
+    }
     private void Awake()
     {
         _arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
@@ -64,8 +96,30 @@ public class ImageDetectionScript : MonoBehaviour
             announced_field_scanned = true;
             PhotonView UIPV = PhotonView.Get(connection);
             UIPV.RPC("updateReadyPlayers", RpcTarget.All);
+            return;
         }
-        
+        if (lookingAtHand)
+        {
+            foreach (var trackedImage in args.added)
+            {
+                lastSelectedCard = trackedImage.referenceImage.name;
+            }
+            foreach(var trackedImage in args.updated)
+            {
+                lastSelectedCard = trackedImage.referenceImage.name;
+            }
+        }
+        else
+        {
+            foreach (var trackedImage in args.added)
+            {
+                lastSelectedField = trackedImage.referenceImage.name;
+            }
+            foreach (var trackedImage in args.updated)
+            {
+                lastSelectedField = trackedImage.referenceImage.name;
+            }
+        }
         
     }
 
@@ -78,5 +132,6 @@ public class ImageDetectionScript : MonoBehaviour
     public void SetFieldLook()
     {
         lookingAtHand = false;
+        _arTrackedImageManager.referenceLibrary = fieldLibrary;
     }
 }

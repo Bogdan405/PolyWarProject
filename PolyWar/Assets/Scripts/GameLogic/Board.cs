@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
     private CardClass[] personalCards;
     private int playedCardsThisTurn;
     public GameObject UI;
+    public GameObject AR;
     private int turnCounter;
     private Deck personalDeck;
     private Hand personalHand;
@@ -70,9 +71,15 @@ public class Board : MonoBehaviour
                 SSTools.ShowMessage("No more cards!", SSTools.Position.bottom, SSTools.Time.twoSecond);
                 return;
             }
-            SSTools.ShowMessage("No more cards!", SSTools.Position.bottom, SSTools.Time.twoSecond);
-            Pair card = personalHand.GetCard(0);
-            personalCards[0].Factory(card.model, card.element);
+            int cardPos = AR.GetComponent<ImageDetectionScript>().GetSelectedCard();
+            int fieldPos = AR.GetComponent<ImageDetectionScript>().GetSelectedField();
+            if( cardPos == -1 || fieldPos == -1)
+            {
+                SSTools.ShowMessage("Field or Card not selected!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+                return;
+            }
+            Pair card = personalHand.GetCard(cardPos);
+            personalCards[fieldPos].Factory(card.model, card.element);
             playedCardsThisTurn ++;
             UI.GetComponent<GameUI>().SetEndTurnButton(true);
             if(playedCardsThisTurn == 3)
