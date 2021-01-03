@@ -3745,6 +3745,7 @@ MonoBehaviour:
   Battlefield: {fileID: 800714225}
   GameLogic: {fileID: 1400664297}
   EndTurn: {fileID: 659781847}
+  PlayCard: {fileID: 1456385350}
 --- !u!114 &1369081540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4207,7 +4208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1456385351
 RectTransform:
   m_ObjectHideFlags: 0

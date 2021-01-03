@@ -16,7 +16,6 @@ public class GameNetwork : MonoBehaviour
     public GameObject gameLogic;
 
 
-
     [PunRPC]
     public void updateReadyPlayers()
     {
@@ -26,7 +25,12 @@ public class GameNetwork : MonoBehaviour
             GameUI gameUI= UI.GetComponent<GameUI>();
             gameUI.ShowAllPlayersAreReady();
             PhotonView turnPV = PhotonView.Get(gameLogic);
-            turnPV.RPC("InitTurns", RpcTarget.All);
+            Turn turn = gameLogic.GetComponent<Turn>();
+            turn.InitTurns();
+            if (turn.IsMyTurn())
+            {
+                gameUI.SetPlayCard(true);
+            }
         }
     }
 

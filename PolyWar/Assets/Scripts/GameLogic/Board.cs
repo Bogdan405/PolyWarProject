@@ -70,10 +70,13 @@ public class Board : MonoBehaviour
 
     public void Fight()
     {
-        PhotonView boardPV = PhotonView.Get(this);
-        boardPV.RPC("HideUI", RpcTarget.All);
-        boardPV.RPC("CardFight", RpcTarget.All);
-        boardPV.RPC("ShowUI", RpcTarget.All);
+        //Animations for AR
+        HideUI();
+        for (int place = 0; place < 3; place++)
+        {
+            Battle.CommitBattle(personalCards[place], enemyCards[place]);
+        }
+        ShowUI();
     }
 
     public void OnClickEndTurn()
@@ -82,24 +85,13 @@ public class Board : MonoBehaviour
         boardPV.RPC("ResetPlayerTurn", RpcTarget.All);
     }
 
-    [PunRPC]
-    public void CardFight()
-    {
-        // Add animations for AR
-        for (int place = 0; place < 3; place++)
-        {
-            Battle.CommitBattle(personalCards[place], enemyCards[place]);
-        }
-    }
 
-    [PunRPC]
     public void HideUI()
     {
         UI.GetComponent<GameUI>().OnClickHideUI();
         UI.GetComponent<GameUI>().setShowButton(false);
     }
 
-    [PunRPC]
     public void ShowUI()
     {
         UI.GetComponent<GameUI>().OnClickShowUI();
