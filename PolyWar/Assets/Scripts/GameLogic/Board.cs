@@ -151,7 +151,11 @@ public class Board : MonoBehaviour
         {
             Fight();
         }
-        this.GetComponent<Turn>().ChangeTurn();
+        else
+        {
+            this.GetComponent<Turn>().ChangeTurn();
+        }
+        
         UI.GetComponent<GameUI>().SetEndTurnButton(false);
 
         if(this.GetComponent<Turn>().IsMyTurn()){
