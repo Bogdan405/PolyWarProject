@@ -11,7 +11,7 @@ public class Board : MonoBehaviour
 {
     private CardClass[] enemyCards;
     private CardClass[] personalCards;
-    private bool playedCardThisTurn;
+    private int playedCardsThisTurn;
     public GameObject UI;
     private int turnCounter;
 
@@ -19,18 +19,16 @@ public class Board : MonoBehaviour
     {
         enemyCards = new CardClass[3];
         personalCards = new CardClass[3];
-        playedCardThisTurn = false;
+        playedCardsThisTurn = 0;
         turnCounter = 0;
 
 
-        enemyCards[0] = null;
-        enemyCards[1] = this.gameObject.AddComponent<CardClass>() as CardClass;
-        enemyCards[1].Factory(Model.Sentry, Element.Chemical);
-        enemyCards[2] = null;
-        personalCards[0] = this.gameObject.AddComponent<CardClass>() as CardClass;
-        personalCards[0].Factory(Model.Wraith, Element.Undead);
-        personalCards[1] = null;
-        personalCards[2] = null;
+        enemyCards[0] = new CardClass();
+        enemyCards[1] = new CardClass();
+        enemyCards[2] = new CardClass();
+        personalCards[0] = new CardClass();
+        personalCards[1] = new CardClass();
+        personalCards[2] = new CardClass();
     }
 
     public CardClass[] GetEnemyCards()
@@ -43,9 +41,9 @@ public class Board : MonoBehaviour
         return personalCards;
     }
 
-    public bool GetPlayedCardThisTurn()
+    public int GetPlayedCardThisTurn()
     {
-        return playedCardThisTurn;
+        return playedCardsThisTurn;
     }
 
     public void SetEnemyCard(int cardNumber, CardClass card)
@@ -60,12 +58,13 @@ public class Board : MonoBehaviour
 
     public void PlayCard()
     {
-        //SetPersonalCard(2,Factory(Model.Sentry, Element.Chemical))
-        if(this.GetComponent<Turn>().IsMyTurn())
+        // params position and card from AR taken
+        if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
         {
             personalCards[0].Factory(Model.Sentry, Element.Chemical);
-            playedCardThisTurn = true;
+            playedCardsThisTurn ++;
             UI.GetComponent<GameUI>().SetEndTurnButton(true);
+            UI.GetComponent<GameUI>().SetPlayCard(false);
         }
     }
 
@@ -73,8 +72,7 @@ public class Board : MonoBehaviour
     {
         PhotonView boardPV = PhotonView.Get(this);
         boardPV.RPC("HideUI", RpcTarget.All);
-        System.Threading.Thread.Sleep(2000);
-
+        boardPV.RPC("CardFight", RpcTarget.All);
         boardPV.RPC("ShowUI", RpcTarget.All);
     }
 
@@ -82,6 +80,16 @@ public class Board : MonoBehaviour
     {
         PhotonView boardPV = PhotonView.Get(this);
         boardPV.RPC("ResetPlayerTurn", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void CardFight()
+    {
+        // Add animations for AR
+        for (int place = 0; place < 3; place++)
+        {
+            Battle.CommitBattle(personalCards[place], enemyCards[place]);
+        }
     }
 
     [PunRPC]
@@ -113,7 +121,7 @@ public class Board : MonoBehaviour
                 UI.GetComponent<GameUI>().SetEndTurnButton(false);
         }
         if(this.GetComponent<Turn>().IsMyTurn()){
-            playedCardThisTurn = false;
+            playedCardsThisTurn = 0;
         }
     }
 }

@@ -5,7 +5,7 @@ using Card;
 using System;
 using Pairs;
 
-public class Deck : MonoBehaviour
+public class Deck
 {
     List<Pair> cards = new List<Pair>();
 

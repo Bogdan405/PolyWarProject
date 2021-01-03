@@ -23,7 +23,7 @@ namespace Card {
     }
 
 
-    public class CardClass : MonoBehaviour
+    public class CardClass
     {
 
         public int life;
@@ -33,13 +33,14 @@ namespace Card {
         public Element element;
         public Animator anim;
         public GameObject ARModel;
+        public bool empty;
 
         public void Factory(Model model, Element element)
         {
             this.model = model;
             this.element = element;
             this.fullName = GetElement() + GetModel();
-
+            this.empty = false;
 
             if (model == Model.Sentry)
             {
@@ -78,6 +79,10 @@ namespace Card {
         public CardClass(Model model, Element element)
         {
             Factory(model, element);
+        }
+        public CardClass()
+        {
+            empty = true;
         }
 
         public void SubstractLife(int damage)
@@ -127,6 +132,15 @@ namespace Card {
             this.element = newElement;
         }
 
+        public void SetEmpty()
+        {
+            empty = true;
+        }
+
+        public bool IsEmpty()
+        {
+            return empty;
+        }
         public void AttackAnimation(){
             ARModel.GetComponent<Animator>().Play("Attack");
         }
@@ -142,12 +156,6 @@ namespace Card {
         public void IdleAnimation(){
             ARModel.GetComponent<Animator>().Play("Idle");
         }
-
-        public CardClass()
-        {
-
-        }
-
         
     }
 }

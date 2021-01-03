@@ -8,7 +8,7 @@ public class BattlefieldCardUI : MonoBehaviour
 {
     public void initCard(CardClass card)
     {
-        if( card != null)
+        if( !card.IsEmpty())
         {
             GameObject element = this.transform.GetChild(0).gameObject;
             GameObject type = this.transform.GetChild(1).gameObject;
