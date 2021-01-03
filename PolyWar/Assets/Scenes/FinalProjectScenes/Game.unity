@@ -4099,6 +4099,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personalHPText: {fileID: 1396348478}
   enemyHPText: {fileID: 1659578022}
+  exitText: {fileID: 1392926846}
+  UI: {fileID: 1369081536}
+  exitPanel: {fileID: 515177809}
 --- !u!114 &1400664303
 MonoBehaviour:
   m_ObjectHideFlags: 0
