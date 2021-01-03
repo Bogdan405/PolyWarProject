@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
 using Card;
@@ -22,6 +23,7 @@ namespace GameUserInterface{
         public GameObject EndTurn;
         public GameObject PlayCard;
         public GameObject SelectedButton;
+        public GameObject selectedButtonText;
         private bool battlefieldShown = false;
         public void Start()
         {
@@ -65,6 +67,11 @@ namespace GameUserInterface{
         public void SetSelectedButton(bool value)
         {
             SelectedButton.SetActive(value);
+        }
+
+        public void UpdateSelectedButton(string cardName)
+        {
+            selectedButtonText.GetComponent<Text>().text = "Selected Card: \n" + cardName;
         }
 
         public void setShowButton(bool value)

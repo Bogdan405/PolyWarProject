@@ -1630,7 +1630,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Selected: None'
+  m_Text: "Selected Card:\n None"
 --- !u!222 &508026969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4153,6 +4153,7 @@ MonoBehaviour:
   EndTurn: {fileID: 659781847}
   PlayCard: {fileID: 1456385350}
   SelectedButton: {fileID: 1889292342}
+  selectedButtonText: {fileID: 508026966}
 --- !u!114 &1369081540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4494,7 +4495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnPanel: {fileID: 1787689634}
-  UI: {fileID: 0}
+  UI: {fileID: 1369081536}
 --- !u!114 &1400664301
 MonoBehaviour:
   m_ObjectHideFlags: 0
