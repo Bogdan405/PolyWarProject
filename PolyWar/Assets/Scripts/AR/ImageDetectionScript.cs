@@ -37,11 +37,11 @@ public class ImageDetectionScript : MonoBehaviour
 
     public int GetSelectedField()
     {
-        if (string.Compare(lastSelectedCard, "Owl") == 0)
+        if (string.Compare(lastSelectedCard, "Owl") == 0 || string.Compare(lastSelectedCard, "Elephant") == 0)
             return 0;
-        if (string.Compare(lastSelectedCard, "Eagle") == 0)
+        if (string.Compare(lastSelectedCard, "Eagle") == 0 || string.Compare(lastSelectedCard, "Scorpion") == 0)
             return 1;
-        if (string.Compare(lastSelectedCard, "Snake") == 0)
+        if (string.Compare(lastSelectedCard, "Snake") == 0 || string.Compare(lastSelectedCard, "Boar") == 0)
             return 2;
         return -1;
     }
