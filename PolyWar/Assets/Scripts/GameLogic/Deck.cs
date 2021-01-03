@@ -9,9 +9,23 @@ public class Deck
 {
     List<Pair> cards = new List<Pair>();
 
-    public void GenerateDeck(){
+    public void GenerateDeck()
+    {
         AddGenerals();
         AddMinions();
+
+        System.Random rng = new System.Random();
+
+        int n = cards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Pair value = cards[k];
+            cards[k] = cards[n];
+            cards[n] = value;
+        }
+
     }
 
     public pair GetNextCard()
