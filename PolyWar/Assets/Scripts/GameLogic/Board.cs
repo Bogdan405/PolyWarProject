@@ -14,7 +14,6 @@ public class Board : MonoBehaviour
     private int playedCardsThisTurn;
     public GameObject UI;
     private int turnCounter;
-
     void Start()
     {
         enemyCards = new CardClass[3];
@@ -64,7 +63,10 @@ public class Board : MonoBehaviour
             personalCards[0].Factory(Model.Sentry, Element.Chemical);
             playedCardsThisTurn ++;
             UI.GetComponent<GameUI>().SetEndTurnButton(true);
-            UI.GetComponent<GameUI>().SetPlayCard(false);
+            if(playedCardsThisTurn == 3)
+            {
+                UI.GetComponent<GameUI>().SetPlayCard(false);
+            }
         }
     }
 
@@ -99,19 +101,20 @@ public class Board : MonoBehaviour
     }
 
     [PunRPC]
-    public void ResetPlayerTurn()
+    public void ResetPlayerTurn(CardClass[] cardsModified)
     {
+        if (!this.GetComponent<Turn>().IsMyTurn())
+        {
+            enemyCards = cardsModified;
+        }
         turnCounter++;
         if(turnCounter % 2 == 0)
         {
             Fight();
         }
-        else
-        {
-                PhotonView boardPV = PhotonView.Get(this);
-                boardPV.RPC("ChangeTurn", RpcTarget.Others);
-                UI.GetComponent<GameUI>().SetEndTurnButton(false);
-        }
+        this.GetComponent<Turn>().ChangeTurn();
+        UI.GetComponent<GameUI>().SetEndTurnButton(false);
+
         if(this.GetComponent<Turn>().IsMyTurn()){
             playedCardsThisTurn = 0;
         }
