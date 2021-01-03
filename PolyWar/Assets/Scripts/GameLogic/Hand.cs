@@ -18,7 +18,10 @@ namespace Card
 
         public void AddCard(Deck PlayerDeck)
         {
-            HandCards.Add(PlayerDeck.GetNextCard());
+            if (!PlayerDeck.DeckIsEmpty())
+            {
+                HandCards.Add(PlayerDeck.GetNextCard());
+            }
         }
 
         public Pair GetCard(int number)
@@ -31,7 +34,7 @@ namespace Card
 
         public void FillHand(Deck PlayerDeck)
         {
-            while (this.GetHandSize() < 5 && !PlayerDeck.DeckIsEmpty())
+            while (this.GetHandSize() < 5)
             {
                 this.AddCard(PlayerDeck);
             }
