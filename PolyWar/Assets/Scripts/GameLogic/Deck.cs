@@ -9,11 +9,31 @@ public class Deck
 {
     List<Pair> cards = new List<Pair>();
 
-    public void GenerateDeck(){
+    public void GenerateDeck()
+    {
         AddGenerals();
         AddMinions();
+
+        System.Random rng = new System.Random();
+
+        int n = cards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Pair value = cards[k];
+            cards[k] = cards[n];
+            cards[n] = value;
+        }
+
     }
 
+    public pair GetNextCard()
+    {
+        pair TheCard = this.cards.ElementAt(0);
+        this.cards.RemoveAt(0);
+        return TheCard;
+    }
 
     public Pair GenerateOneMinion()
     {
