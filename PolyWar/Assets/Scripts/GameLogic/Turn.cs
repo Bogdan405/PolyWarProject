@@ -39,6 +39,7 @@ namespace PlayerTurn {
             currentTurn = TurnType.MasterTurn;
             UpdateTurnPanel();
             DisplaySelectedCardButton();
+            DisplaySelectedFieldButton();
         }
     
         [PunRPC]
@@ -54,6 +55,7 @@ namespace PlayerTurn {
             }
             UpdateTurnPanel();
             DisplaySelectedCardButton();
+            DisplaySelectedFieldButton();
         }
 
         public void DisplaySelectedCardButton()
@@ -65,6 +67,18 @@ namespace PlayerTurn {
             else
             {
                 UI.GetComponent<GameUI>().SetSelectedButton(false);
+            }
+        }
+
+        public void DisplaySelectedFieldButton()
+        {
+            if (IsMyTurn())
+            {
+                UI.GetComponent<GameUI>().SetSelectedField(true);
+            }
+            else
+            {
+                UI.GetComponent<GameUI>().SetSelectedField(false);
             }
         }
 

@@ -72,6 +72,11 @@ namespace GameUserInterface{
             SelectedButton.SetActive(value);
         }
 
+        public void SetSelectedField(bool value)
+        {
+            SelectedField.SetActive(value);
+        }
+
         public void UpdateSelectedButton(string cardName)
         {
             selectedButtonText.GetComponent<Text>().text = "Selected Card: \n" + cardName;
