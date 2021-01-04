@@ -24,6 +24,8 @@ namespace GameUserInterface{
         public GameObject PlayCard;
         public GameObject SelectedButton;
         public GameObject selectedButtonText;
+        public GameObject SelectedField;
+        public GameObject SelectedFieldText;
         private bool battlefieldShown = false;
         public void Start()
         {
@@ -52,6 +54,7 @@ namespace GameUserInterface{
             SetEndTurnButton(false);
             PlayCard.SetActive(false);
             SelectedButton.SetActive(false);
+            SelectedField.SetActive(false);
         }
 
         public void SetEndTurnButton(bool value)
@@ -74,6 +77,11 @@ namespace GameUserInterface{
             selectedButtonText.GetComponent<Text>().text = "Selected Card: \n" + cardName;
         }
 
+        public void UpdateSelectedField(string fieldName)
+        {
+            selectedButtonText.GetComponent<Text>().text = "Selected Field: \n" + fieldName;
+        }
+
         public void setShowButton(bool value)
         {
             ShowButton.SetActive(value);
@@ -88,10 +96,11 @@ namespace GameUserInterface{
             SurrenderButton.SetActive(true);
             EnemyHPButton.SetActive(true);
             MyHPButton.SetActive(true);
-            SelectedButton.SetActive(true);
             ShowButton.SetActive(false);
             if (GameLogic.GetComponent<Turn>().IsMyTurn())
             {
+                SelectedButton.SetActive(true);
+                SelectedField.SetActive(true);
                 PlayCard.SetActive(true);
                 if (GameLogic.GetComponent<Board>().GetPlayedCardThisTurn() > 0)
                 {
