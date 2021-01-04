@@ -62,6 +62,28 @@ public class Board : MonoBehaviour
         enemyCards[cardNumber] = card;
     }
 
+    public bool isFullField()
+    {
+        for(int index = 0; index < 3; index++)
+        {
+            if (personalCards[index].IsEmpty())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool isLegalFieldPos(int position)
+    {
+        if (personalCards[position].IsEmpty())
+            return true;
+        return false;
+    }
+
+    private bool isLegalCardPos(int position)
+    {
+        return !personalHand.isEmptyPosition(position);
+    }
     public void PlayCard()
     {   
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
@@ -73,19 +95,32 @@ public class Board : MonoBehaviour
             }
             int cardPos = AR.GetComponent<ImageDetectionScript>().GetSelectedCard();
             int fieldPos = AR.GetComponent<ImageDetectionScript>().GetSelectedField();
-            if( cardPos == -1 || fieldPos == -1)
+            if( cardPos == -1)
             {
-                SSTools.ShowMessage("Field or Card not selected!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+                SSTools.ShowMessage("Card not selected!", SSTools.Position.bottom, SSTools.Time.twoSecond);
                 return;
             }
-            Pair card = personalHand.GetCard(cardPos);
-            personalCards[fieldPos].Factory(card.model, card.element);
-            playedCardsThisTurn ++;
-            UI.GetComponent<GameUI>().SetEndTurnButton(true);
-            if(playedCardsThisTurn == 3)
+            if (fieldPos == -1)
             {
-                UI.GetComponent<GameUI>().SetPlayCard(false);
+                SSTools.ShowMessage("Field not selected!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+                return;
             }
+            if(isLegalCardPos(cardPos) && isLegalFieldPos(fieldPos))
+            {
+                Pair card = personalHand.GetCard(cardPos);
+                personalCards[fieldPos].Factory(card.model, card.element);
+                playedCardsThisTurn++;
+                UI.GetComponent<GameUI>().SetEndTurnButton(true);
+                if (playedCardsThisTurn == 3)
+                {
+                    UI.GetComponent<GameUI>().SetPlayCard(false);
+                }
+            }
+            else
+            {
+                SSTools.ShowMessage("Invalid Field or Card", SSTools.Position.middle, SSTools.Time.oneSecond);
+            }
+            
         }
     }
 

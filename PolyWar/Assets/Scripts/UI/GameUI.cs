@@ -79,7 +79,7 @@ namespace GameUserInterface{
 
         public void UpdateSelectedField(string fieldName)
         {
-            selectedButtonText.GetComponent<Text>().text = "Selected Field: \n" + fieldName;
+            SelectedFieldText.GetComponent<Text>().text = "Selected Field: \n" + fieldName;
         }
 
         public void setShowButton(bool value)
@@ -110,6 +110,11 @@ namespace GameUserInterface{
                         PlayCard.SetActive(false);
                     }
                 
+                }
+                else if (GameLogic.GetComponent<Board>().isFullField())
+                {
+                    SetEndTurnButton(true);
+                    PlayCard.SetActive(false);
                 }
             }
 

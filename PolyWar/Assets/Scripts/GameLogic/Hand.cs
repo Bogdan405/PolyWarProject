@@ -37,6 +37,12 @@ namespace Card
 
         }
 
+        public bool isEmptyPosition(int position)
+        {
+            if (HandCards[position] == null)
+                return true;
+            return false;
+        }
         public void FillHand(Deck PlayerDeck)
         {
             for(int index = 0; index < 5; index++)

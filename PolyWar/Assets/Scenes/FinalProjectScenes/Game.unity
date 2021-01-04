@@ -6697,6 +6697,8 @@ MonoBehaviour:
   UI: {fileID: 1369081536}
   connection: {fileID: 171987819}
   gameLogic: {fileID: 1400664297}
+  placeable: {fileID: 7769251868722212769, guid: a63a72140e86bc44b97e96e991482a70,
+    type: 3}
 --- !u!114 &2017586501
 MonoBehaviour:
   m_ObjectHideFlags: 0

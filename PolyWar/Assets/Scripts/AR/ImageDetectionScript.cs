@@ -18,6 +18,9 @@ public class ImageDetectionScript : MonoBehaviour
     public GameObject gameLogic;
     private string lastSelectedCard = null;
     private string lastSelectedField = null;
+    [SerializeField]
+    private GameObject placeable;
+    private GameObject inst_placeable;
 
     public int GetSelectedCard()
     {
@@ -36,11 +39,11 @@ public class ImageDetectionScript : MonoBehaviour
 
     public int GetSelectedField()
     {
-        if (string.Compare(lastSelectedCard, "Owl") == 0 || string.Compare(lastSelectedCard, "Elephant") == 0)
+        if (string.Compare(lastSelectedField, "Owl") == 0 || string.Compare(lastSelectedField, "Elephant") == 0)
             return 0;
-        if (string.Compare(lastSelectedCard, "Eagle") == 0 || string.Compare(lastSelectedCard, "Scorpion") == 0)
+        if (string.Compare(lastSelectedField, "Eagle") == 0 || string.Compare(lastSelectedField, "Scorpion") == 0)
             return 1;
-        if (string.Compare(lastSelectedCard, "Snake") == 0 || string.Compare(lastSelectedCard, "Boar") == 0)
+        if (string.Compare(lastSelectedField, "Snake") == 0 || string.Compare(lastSelectedField, "Boar") == 0)
             return 2;
         return -1;
     }
@@ -52,10 +55,7 @@ public class ImageDetectionScript : MonoBehaviour
     private void Awake()
     {
         _arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-    }
-
-    public void Start()
-    {
+        inst_placeable = Instantiate(placeable, Vector3.zero, Quaternion.identity);
         fieldScanned = new Dictionary<string, bool>();
         handScanned = new Dictionary<string, bool>();
         fieldScanned.Add("Snake", false);
@@ -69,6 +69,11 @@ public class ImageDetectionScript : MonoBehaviour
         handScanned.Add("Card3", false);
         handScanned.Add("Card4", false);
         handScanned.Add("Card5", false);
+    }
+
+    public void Start()
+    {
+        
     }
     public void OnEnable()
     {
@@ -115,13 +120,19 @@ public class ImageDetectionScript : MonoBehaviour
             {
                 if (tracked.trackingState == TrackingState.Tracking)
                 {
-                    UI.GetComponent<GameUI>().UpdateSelectedButton(tracked.referenceImage.name);
-                    Vector3 test = tracked.transform.position;
-                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    cube.transform.localScale = new Vector3(5, 5, 5);
-                    cube.transform.position = test;
-                    _arTrackedImageManager.trackedImagePrefab = cube;
-                    SSTools.ShowMessage(test.ToString(), SSTools.Position.middle, SSTools.Time.oneSecond);
+                    if (handScanned.ContainsKey(tracked.referenceImage.name))
+                    {
+                        UI.GetComponent<GameUI>().UpdateSelectedButton(tracked.referenceImage.name);
+                        lastSelectedCard = tracked.referenceImage.name;
+                    }
+                    if(fieldScanned.ContainsKey(tracked.referenceImage.name))
+                    {
+                        UI.GetComponent<GameUI>().UpdateSelectedField(tracked.referenceImage.name);
+                        lastSelectedField = tracked.referenceImage.name;
+                    }
+                    
+                    inst_placeable.transform.position = tracked.transform.position;
+                    inst_placeable.SetActive(true);
                 }
             }
         }

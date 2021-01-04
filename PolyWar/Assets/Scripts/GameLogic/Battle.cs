@@ -9,8 +9,22 @@ namespace Card {
         public static int[] CommitBattle(CardClass firstCard, CardClass secondCard)
         {
             int[] life_reductions = { 0, 0 };
-            life_reductions[1] = secondCard.SubstractLife(CalculateDamage(firstCard.damage, firstCard.element, secondCard.element));
-            life_reductions[0] = firstCard.SubstractLife(CalculateDamage(secondCard.damage, secondCard.element, firstCard.element));
+            if (!secondCard.IsEmpty())
+            {
+                life_reductions[1] = secondCard.SubstractLife(CalculateDamage(firstCard.damage, firstCard.element, secondCard.element));
+            }
+            else
+            {
+                life_reductions[1] = firstCard.damage;
+            }
+            if (!firstCard.IsEmpty())
+            {
+                life_reductions[0] = firstCard.SubstractLife(CalculateDamage(secondCard.damage, secondCard.element, firstCard.element));
+            }
+            else
+            {
+                life_reductions[0] = secondCard.damage;
+            }
             return life_reductions;
         }
 

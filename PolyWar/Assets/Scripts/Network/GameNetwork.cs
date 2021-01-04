@@ -36,7 +36,16 @@ public class GameNetwork : MonoBehaviour
             turn.InitTurns();
             if (turn.IsMyTurn())
             {
-                gameUI.SetPlayCard(true);
+                
+                if (gameLogic.GetComponent<Board>().isFullField())
+                {
+                    gameUI.SetEndTurnButton(true);
+                    gameUI.SetPlayCard(false);
+                }
+                else
+                {
+                    gameUI.SetPlayCard(true);
+                }
             }
         }
     }
