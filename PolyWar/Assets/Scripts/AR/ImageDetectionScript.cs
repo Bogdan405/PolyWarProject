@@ -119,12 +119,12 @@ public class ImageDetectionScript : MonoBehaviour
                     Vector3 test = tracked.transform.position;
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     cube.transform.localScale = new Vector3(5, 5, 5);
+                    cube.transform.position = test;
                     _arTrackedImageManager.trackedImagePrefab = cube;
                     SSTools.ShowMessage(test.ToString(), SSTools.Position.middle, SSTools.Time.oneSecond);
                 }
             }
         }
-
     }
 
     public void setReady()
