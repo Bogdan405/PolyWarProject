@@ -1,25 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
-public class NewBehaviourScript : MonoBehaviour
+
+public class AnimationPlayScript : MonoBehaviour
 {
     public Animator ThisAnimator;
+	
+	void SetAnimator(){
+		this.ThisAnimator = GetComponent<Animator>();
+	}
+	
     void playAttack()
     {
-        ThisAnimator.play("Attack");
+        this.ThisAnimator.Play("Attack");
     }
     void playDefense()
     {
-        ThisAnimator.play("Defense");
+        this.ThisAnimator.Play("Defense");
     }
     void playIdle()
     {
-        ThisAnimator.play("Idle");
+        this.ThisAnimator.Play("Idle");
     }
     void playDeath()
     {
-        ThisAnimator.play("Death");
+        this.ThisAnimator.Play("Death");
     }
 }
-*/
