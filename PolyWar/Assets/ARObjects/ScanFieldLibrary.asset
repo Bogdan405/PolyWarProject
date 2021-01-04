@@ -75,3 +75,53 @@ MonoBehaviour:
     m_SpecifySize: 0
     m_Name: Boar
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5700473084947592480
+      m_GuidHigh: 16037929740990556305
+    m_SerializedTextureGuid:
+      m_GuidLow: 11845825677946866865
+      m_GuidHigh: 13757143969128444282
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4785493336951005604
+      m_GuidHigh: 15717939939581552784
+    m_SerializedTextureGuid:
+      m_GuidLow: 775974261101212027
+      m_GuidHigh: 16952345075404167914
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5181689155911285681
+      m_GuidHigh: 16517408430860574388
+    m_SerializedTextureGuid:
+      m_GuidLow: 15952992415931521066
+      m_GuidHigh: 17671990878578043384
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5505261286164679323
+      m_GuidHigh: 1067359899751277715
+    m_SerializedTextureGuid:
+      m_GuidLow: 6801581947093143418
+      m_GuidHigh: 8001018216849372091
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4923252901779519430
+      m_GuidHigh: 580353878832971656
+    m_SerializedTextureGuid:
+      m_GuidLow: 9778599561548724623
+      m_GuidHigh: 6383014755414176377
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Card5
+    m_Texture: {fileID: 0}

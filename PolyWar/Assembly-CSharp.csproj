@@ -288,6 +288,7 @@
      <Compile Include="Assets\Photon\Simple\Utilities\SimpleDocsURLS.cs" />
      <Compile Include="Assets\Photon\Simple\Utilities\SmartVars\SmartVars.cs" />
      <Compile Include="Assets\SSTools\Scripts\SSTools.cs" />
+     <Compile Include="Assets\Scripts\AR\AnimationPlayScript.cs" />
      <Compile Include="Assets\Scripts\AR\ImageDetectionScript.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
      <Compile Include="Assets\Scripts\Characters\IPolyCharacter.cs" />
@@ -307,7 +308,6 @@
      <Compile Include="Assets\Scripts\Network\Test\ConnectToRoom.cs" />
      <Compile Include="Assets\Scripts\Network\Test\MessageConsoleScript.cs" />
      <Compile Include="Assets\Scripts\Network\Test\PlayerPlateScript.cs" />
-     <Compile Include="Assets\Scripts\UI\ARUIScript.cs" />
      <Compile Include="Assets\Scripts\UI\BattlefieldCardUI.cs" />
      <Compile Include="Assets\Scripts\UI\BattlefieldUI.cs" />
      <Compile Include="Assets\Scripts\UI\GameUI.cs" />
@@ -503,25 +503,25 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="ByteConverter">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/Compression/plugins/ByteConverter.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/Compression/plugins/ByteConverter.dll</HintPath>
  </Reference>
  <Reference Include="FloatCrusher">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/TransformCrusher/plugins/FloatCrusher.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/TransformCrusher/plugins/FloatCrusher.dll</HintPath>
  </Reference>
  <Reference Include="HalFloat">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/TransformCrusher/plugins/HalFloat.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/TransformCrusher/plugins/HalFloat.dll</HintPath>
  </Reference>
  <Reference Include="QuatCompress">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/TransformCrusher/plugins/QuatCompress.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Assets/Photon/PhotonUtilities/TransformCrusher/plugins/QuatCompress.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -869,70 +869,70 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.Management">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Subsystem.Registration">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARSubsystems">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARSubsystems.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARSubsystems.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARSubsystems.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARSubsystems.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARSubsystems.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARCore">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARCore.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARCore.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARFoundation.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARFoundation.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARFoundation.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARFoundation">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARCore.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARCore.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.ARCore.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.XR.LegacyInputHelpers">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.Management.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.SpatialTracking">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.XR.LegacyInputHelpers">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>E:/IMR/PolyWar/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Coding/PolyWarProject/PolyWar/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

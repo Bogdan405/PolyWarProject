@@ -14,11 +14,13 @@ public class GameNetwork : MonoBehaviour
     public GameObject exitPanel;
     public GameObject exitText;
     public GameObject gameLogic;
+    public GameObject AR;
 
     public void OnClickUpdateReadyPlayers()
     {
         PhotonView gamePV = PhotonView.Get(this);
         gamePV.RPC("updateReadyPlayers", RpcTarget.All);
+        AR.GetComponent<ImageDetectionScript>().setReady();
     }
 
     [PunRPC]

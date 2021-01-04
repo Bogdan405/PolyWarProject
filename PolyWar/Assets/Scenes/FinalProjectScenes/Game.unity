@@ -797,6 +797,7 @@ MonoBehaviour:
   exitPanel: {fileID: 515177809}
   exitText: {fileID: 1392926846}
   gameLogic: {fileID: 1400664297}
+  AR: {fileID: 2017586497}
 --- !u!4 &171987823
 Transform:
   m_ObjectHideFlags: 0
@@ -4188,7 +4189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f78d650e359d4469d08ed6fe96b2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ARLookButton: {fileID: 11197724}
+  ARLookButton: {fileID: 348604675}
   AR: {fileID: 2017586497}
 --- !u!1 &1380941125
 GameObject:

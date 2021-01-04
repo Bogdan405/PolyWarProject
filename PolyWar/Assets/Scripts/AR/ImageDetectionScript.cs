@@ -11,13 +11,11 @@ public class ImageDetectionScript : MonoBehaviour
 {
     private ARTrackedImageManager _arTrackedImageManager;
     private Dictionary<string, bool> fieldScanned;
+    private Dictionary<string, bool> handScanned;
     private bool announced_field_scanned = false;
-    public XRReferenceImageLibrary fieldLibrary;
-    public XRReferenceImageLibrary handLibrary;
     public GameObject UI;
     public GameObject connection;
     public GameObject gameLogic;
-    private bool lookingAtHand = false;
     private string lastSelectedCard = null;
     private string lastSelectedField = null;
 
@@ -59,12 +57,18 @@ public class ImageDetectionScript : MonoBehaviour
     public void Start()
     {
         fieldScanned = new Dictionary<string, bool>();
+        handScanned = new Dictionary<string, bool>();
         fieldScanned.Add("Snake", false);
         fieldScanned.Add("Boar", false);
         fieldScanned.Add("Eagle", false);
         fieldScanned.Add("Owl", false);
         fieldScanned.Add("Elephant", false);
         fieldScanned.Add("Scorpion", false);
+        handScanned.Add("Card1", false);
+        handScanned.Add("Card2", false);
+        handScanned.Add("Card3", false);
+        handScanned.Add("Card4", false);
+        handScanned.Add("Card5", false);
     }
     public void OnEnable()
     {
@@ -80,10 +84,13 @@ public class ImageDetectionScript : MonoBehaviour
     {
         if(announced_field_scanned == false)
         {
-            foreach (var trackedImage in args.added)
+            foreach (ARTrackedImage trackedImage in args.added)
             {
-                SSTools.ShowMessage(trackedImage.referenceImage.name + " scanned", SSTools.Position.middle, SSTools.Time.oneSecond);
-                fieldScanned[trackedImage.referenceImage.name] = true;
+                if (fieldScanned.ContainsKey(trackedImage.referenceImage.name))
+                { 
+                    SSTools.ShowMessage(trackedImage.referenceImage.name + " scanned", SSTools.Position.middle, SSTools.Time.oneSecond);
+                    fieldScanned[trackedImage.referenceImage.name] = true;
+                }
             }
             foreach (string el in fieldScanned.Keys)
             {
@@ -99,42 +106,29 @@ public class ImageDetectionScript : MonoBehaviour
             UIPV.RPC("updateReadyPlayers", RpcTarget.All);
             return;
         }
-        if (lookingAtHand)
+    }
+    public void Update()
+    {
+        if (announced_field_scanned)
         {
-            foreach (var trackedImage in args.added)
+            foreach (ARTrackedImage tracked in _arTrackedImageManager.trackables)
             {
-                lastSelectedCard = trackedImage.referenceImage.name;
+                if (tracked.trackingState == TrackingState.Tracking)
+                {
+                    UI.GetComponent<GameUI>().UpdateSelectedButton(tracked.referenceImage.name);
+                    Vector3 test = tracked.transform.position;
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    cube.transform.localScale = new Vector3(5, 5, 5);
+                    _arTrackedImageManager.trackedImagePrefab = cube;
+                    SSTools.ShowMessage(test.ToString(), SSTools.Position.middle, SSTools.Time.oneSecond);
+                }
             }
-            foreach(var trackedImage in args.updated)
-            {
-                lastSelectedCard = trackedImage.referenceImage.name;
-            }
-            UI.GetComponent<GameUI>().UpdateSelectedButton(lastSelectedCard);
         }
-        else
-        {
-            foreach (var trackedImage in args.added)
-            {
-                lastSelectedField = trackedImage.referenceImage.name;
-            }
-            foreach (var trackedImage in args.updated)
-            {
-                lastSelectedField = trackedImage.referenceImage.name;
-            }
-            UI.GetComponent<GameUI>().UpdateSelectedButton(lastSelectedField);
-        }
-        
+
     }
 
-    public void SetHandLook()
+    public void setReady()
     {
-        lookingAtHand = true;
-        _arTrackedImageManager.referenceLibrary = handLibrary;
-    }
-
-    public void SetFieldLook()
-    {
-        lookingAtHand = false;
-        _arTrackedImageManager.referenceLibrary = fieldLibrary;
+        announced_field_scanned = true;
     }
 }
