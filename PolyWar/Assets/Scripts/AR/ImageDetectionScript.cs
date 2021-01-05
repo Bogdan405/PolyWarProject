@@ -56,6 +56,7 @@ public class ImageDetectionScript : MonoBehaviour
     {
         _arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         inst_placeable = Instantiate(placeable, Vector3.zero, Quaternion.identity);
+        inst_placeable.SetActive(false);
         fieldScanned = new Dictionary<string, bool>();
         handScanned = new Dictionary<string, bool>();
         fieldScanned.Add("Snake", false);
@@ -96,6 +97,7 @@ public class ImageDetectionScript : MonoBehaviour
                     SSTools.ShowMessage(trackedImage.referenceImage.name + " scanned", SSTools.Position.middle, SSTools.Time.oneSecond);
                     fieldScanned[trackedImage.referenceImage.name] = true;
                 }
+                
             }
             foreach (string el in fieldScanned.Keys)
             {
@@ -130,9 +132,16 @@ public class ImageDetectionScript : MonoBehaviour
                         UI.GetComponent<GameUI>().UpdateSelectedField(tracked.referenceImage.name);
                         lastSelectedField = tracked.referenceImage.name;
                     }
-                    
-                    inst_placeable.transform.position = tracked.transform.position;
                     inst_placeable.SetActive(true);
+                    
+                    
+                    inst_placeable.transform.position = tracked.transform.localPosition;
+                    inst_placeable.SetActive(true);
+                    //inst_placeable.transform.localPosition = new Vector3(0, 0, 0);
+                    //SSTools.ShowMessage(tracked.transform.localScale.ToString(),SSTools.Position.middle,SSTools.Time.threeSecond);
+                    //SSTools.ShowMessage(tracked.transform.position.ToString(),SSTools.Position.bottom,SSTools.Time.threeSecond);
+                    //SSTools.ShowMessage(tracked.transform.rotation.ToString(),SSTools.Position.top,SSTools.Time.threeSecond);
+
                 }
             }
         }

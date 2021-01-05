@@ -5,11 +5,10 @@ using Pairs;
 
 public class InstantiationScript : MonoBehaviour
 {
-    public GameObject ModelObj = new GameObject();
+    GameObject ModelObj;
 
-
-    // UnityEngine.Object EnchanterAnimator = Resources.Load("Assets/Models/PrefabsModels/EnchanterAnimator");
-    
+    [SerializeField]
+    private GameObject UndeadEnchanterMod;
     public GameObject UndeadEnchanterModel = Resources.Load("Assets/Models/PrefabsModels/UndeadEnchanter") as GameObject;
     public GameObject AutomatonEnchanterModel = Resources.Load("Assets/Models/PrefabsModels/AutomatonEnchanter") as GameObject;
     public GameObject ChemicalEnchanterModel = Resources.Load("Assets/Models/PrefabsModels/ChemicalEnchanter") as GameObject;
@@ -42,12 +41,10 @@ public class InstantiationScript : MonoBehaviour
 
     //UnityEngine.Object AnimationPlayScript = Resources.Load("Assets/Scripts/AR/AnimationPlayScript");
 
-    public Object MakeObj(Pair target) {
+    public GameObject MakeObj(Pair target) {
         if (target.element == Card.Element.Undead)
         {
             if (target.model == Card.Model.Sentry) {
-                //GameObject.AddComponent(typeof(AnimationPlayScript)) as AnimationPlayScript;
-                // asta still ar trebui facut : ModelObj.AddComponent<EnchanterAnimator>();
                 ModelObj = Instantiate(UndeadSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
                 return ModelObj;
             }
