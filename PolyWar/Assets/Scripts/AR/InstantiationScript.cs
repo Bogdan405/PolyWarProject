@@ -8,37 +8,37 @@ public class InstantiationScript : MonoBehaviour
     public GameObject ModelObj = new GameObject();
 
 
-    // UnityEngine.Object EnchanterAnimator = Resources.Load("Assets/Models/EnchanterAnimator");
+    // UnityEngine.Object EnchanterAnimator = Resources.Load("Assets/Models/PrefabsModels/EnchanterAnimator");
+    
+    public GameObject UndeadEnchanterModel = Resources.Load("Assets/Models/PrefabsModels/UndeadEnchanter") as GameObject;
+    public GameObject AutomatonEnchanterModel = Resources.Load("Assets/Models/PrefabsModels/AutomatonEnchanter") as GameObject;
+    public GameObject ChemicalEnchanterModel = Resources.Load("Assets/Models/PrefabsModels/ChemicalEnchanter") as GameObject;
+    public GameObject ElementalEnchanterModel = Resources.Load("Assets/Models/PrefabsModels/ElementalEnchanter") as GameObject;
 
-    public GameObject UndeadEnchanterModel = Resources.Load("Assets/Models/UndeadEnchanter") as GameObject;
-    public GameObject AutomatonEnchanterModel = Resources.Load("Assets/Models/AutomatonEnchanter") as GameObject;
-    public GameObject ChemicalEnchanterModel = Resources.Load("Assets/Models/ChemicalEnchanter") as GameObject;
-    public GameObject ElementalEnchanterModel = Resources.Load("Assets/Models/ElementalEnchanter") as GameObject;
+    public GameObject AutomatonSentryModel = Resources.Load("Assets/Models/PrefabsModels/AutomatonSentry") as GameObject;
+    public GameObject ElementalSentryModel = Resources.Load("Assets/Models/PrefabsModels/ElementalSentry") as GameObject;
+    public GameObject ChemicalSentryModel = Resources.Load("Assets/Models/PrefabsModels/ChemicalSentry") as GameObject;
+    public GameObject UndeadSentryModel = Resources.Load("Assets/Models/PrefabsModels/UndeadSentry") as GameObject;
 
-    public GameObject AutomatonSentryModel = Resources.Load("Assets/Models/AutomatonSentry") as GameObject;
-    public GameObject ElementalSentryModel = Resources.Load("Assets/Models/ElementalSentry") as GameObject;
-    public GameObject ChemicalSentryModel = Resources.Load("Assets/Models/ChemicalSentry") as GameObject;
-    public GameObject UndeadSentryModel = Resources.Load("Assets/Models/UndeadSentry") as GameObject;
+    public GameObject AutomatonJuggernautModel = Resources.Load("Assets/Models/PrefabsModels/AutomatonJuggernaut") as GameObject;
+    public GameObject ElementalJuggernautModel = Resources.Load("Assets/Models/PrefabsModels/ElementalJuggernaut") as GameObject;
+    public GameObject ChemicalJuggernautModel = Resources.Load("Assets/Models/PrefabsModels/ChemicalJuggernaut") as GameObject;
+    public GameObject UndeadJuggernautModel = Resources.Load("Assets/Models/PrefabsModels/UndeadJuggernaut") as GameObject;
 
-    public GameObject AutomatonJuggernautModel = Resources.Load("Assets/Models/AutomatonJuggernaut") as GameObject;
-    public GameObject ElementalJuggernautModel = Resources.Load("Assets/Models/ElementalJuggernaut") as GameObject;
-    public GameObject ChemicalJuggernautModel = Resources.Load("Assets/Models/ChemicalJuggernaut") as GameObject;
-    public GameObject UndeadJuggernautModel = Resources.Load("Assets/Models/UndeadJuggernaut") as GameObject;
+    public GameObject AutomatonWraithModel = Resources.Load("Assets/Models/PrefabsModels/AutomatonWraith") as GameObject;
+    public GameObject ElementalWraithModel = Resources.Load("Assets/Models/PrefabsModels/ElementalWraith") as GameObject;
+    public GameObject ChemicalWraithModel = Resources.Load("Assets/Models/PrefabsModels/ChemicalWraith") as GameObject;
+    public GameObject UndeadWraithModel = Resources.Load("Assets/Models/PrefabsModels/UndeadWraith") as GameObject;
 
-    public GameObject AutomatonWraithModel = Resources.Load("Assets/Models/AutomatonWraith") as GameObject;
-    public GameObject ElementalWraithModel = Resources.Load("Assets/Models/ElementalWraith") as GameObject;
-    public GameObject ChemicalWraithModel = Resources.Load("Assets/Models/ChemicalWraith") as GameObject;
-    public GameObject UndeadWraithModel = Resources.Load("Assets/Models/UndeadWraith") as GameObject;
+    public GameObject AutomatonLordMantisModel = Resources.Load("Assets/Models/PrefabsModels/AutomatonLordMantis") as GameObject;
+    public GameObject ElementalLordMantisModel = Resources.Load("Assets/Models/PrefabsModels/ElementalLordMantis") as GameObject;
+    public GameObject ChemicalLordMantisModel = Resources.Load("Assets/Models/PrefabsModels/ChemicalLordMantis") as GameObject;
+    public GameObject UndeadLordMantisModel = Resources.Load("Assets/Models/PrefabsModels/UndeadLordMantis") as GameObject;
 
-    public GameObject AutomatonLordMantisModel = Resources.Load("Assets/Models/AutomatonLordMantis") as GameObject;
-    public GameObject ElementalLordMantisModel = Resources.Load("Assets/Models/ElementalLordMantis") as GameObject;
-    public GameObject ChemicalLordMantisModel = Resources.Load("Assets/Models/ChemicalLordMantis") as GameObject;
-    public GameObject UndeadLordMantisModel = Resources.Load("Assets/Models/UndeadLordMantis") as GameObject;
-
-    public GameObject AutomatonBerserkModel = Resources.Load("Assets/Models/AutomatonBerserk") as GameObject;
-    public GameObject ElementalBerserkModel = Resources.Load("Assets/Models/ElementalBerserk") as GameObject;
-    public GameObject ChemicalBerserkModel = Resources.Load("Assets/Models/ChemicalBerserk") as GameObject;
-    public GameObject UndeadBerserkModel = Resources.Load("Assets/Models/UndeadBerserk") as GameObject;
+    public GameObject AutomatonBerserkModel = Resources.Load("Assets/Models/PrefabsModels/AutomatonBerserk") as GameObject;
+    public GameObject ElementalBerserkModel = Resources.Load("Assets/Models/PrefabsModels/ElementalBerserk") as GameObject;
+    public GameObject ChemicalBerserkModel = Resources.Load("Assets/Models/PrefabsModels/ChemicalBerserk") as GameObject;
+    public GameObject UndeadBerserkModel = Resources.Load("Assets/Models/PrefabsModels/UndeadBerserk") as GameObject;
 
     //UnityEngine.Object AnimationPlayScript = Resources.Load("Assets/Scripts/AR/AnimationPlayScript");
 
