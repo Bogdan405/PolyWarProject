@@ -3,7 +3,55 @@ guid: 47c342664eb2e3a4d9bc080ee2bd76a5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - UndeadEnchanterModel: {fileID: 338645908256409476, guid: 8533e0431f55bc9449726ce4a6edf67f,
+      type: 3}
+  - AutomatonEnchanterModel: {fileID: 7165703534591820368, guid: 509d7e7743797f2419b151bd233fd4e9,
+      type: 3}
+  - ChemicalEnchanterModel: {fileID: 4350037075223232640, guid: 389667bda9a66274eb4d0c78dd7b6e2f,
+      type: 3}
+  - ElementalEnchanterModel: {fileID: 6447099868800184815, guid: 045e7b8993e55394eb687cd479e2f758,
+      type: 3}
+  - AutomatonSentryModel: {fileID: 8950608037041886691, guid: 3a0ad101cc2daaa4c9b2f15f22618c03,
+      type: 3}
+  - ElementalSentryModel: {fileID: 4166325343785426878, guid: 85cc3f75fb5b0154ebc58b1654ac125c,
+      type: 3}
+  - ChemicalSentryModel: {fileID: 9187391654349765918, guid: 5d42c31e18225c94b81f308602c862b0,
+      type: 3}
+  - UndeadSentryModel: {fileID: 6807853995693440745, guid: 5a0b6985728b0354fa06d6920ce0d45f,
+      type: 3}
+  - AutomatonJuggernautModel: {fileID: 2155431741732927828, guid: 1070383fee4f933408f20dd1c40955ef,
+      type: 3}
+  - ElementalJuggernautModel: {fileID: 5787928959519759906, guid: 6488d9686714ca4418ff4bfdc54a2574,
+      type: 3}
+  - ChemicalJuggernautModel: {fileID: 3691034970135314685, guid: e8deb55133b2292488eb14b6cfe25f6f,
+      type: 3}
+  - UndeadJuggernautModel: {fileID: 8572704589849827773, guid: 9b059ab095c65824386692a9b9dc200a,
+      type: 3}
+  - AutomatonWraithModel: {fileID: 3057508267365731100, guid: b402b66f73de8c847afde76e618f9ff2,
+      type: 3}
+  - ElementalWraithModel: {fileID: 2114531369976128901, guid: 6ec2f3593fe32be49b71c4b48d6192fe,
+      type: 3}
+  - ChemicalWraithModel: {fileID: 3276383987998114158, guid: 7bdaf3f1dd80df3488b7eea15ac0af3d,
+      type: 3}
+  - UndeadWraithModel: {fileID: 8228668769458055239, guid: 77a2f9338c169614097c0ae90d0736f1,
+      type: 3}
+  - AutomatonLordMantisModel: {fileID: 4977177029077202771, guid: 2eafb305fe1a9b545a6fee83185d747f,
+      type: 3}
+  - ElementalLordMantisModel: {fileID: 2873200140787283829, guid: bbaa4e174f0e7a84abbb08e9df81952e,
+      type: 3}
+  - ChemicalLordMantisModel: {fileID: 7869842420239124714, guid: f54422ce100c5184a9292e617c3ff694,
+      type: 3}
+  - UndeadLordMantisModel: {fileID: 1863199168224665324, guid: 60ba64a104c41ea4dab987f879774722,
+      type: 3}
+  - AutomatonBerserkModel: {fileID: 5112606381923431484, guid: fc11609b9fb21c343b90560bef0baca4,
+      type: 3}
+  - ElementalBerserkModel: {fileID: 2506739068816350302, guid: 7f27b59aad8820b44ae77876d8300f67,
+      type: 3}
+  - ChemicalBerserkModel: {fileID: 377015619519990597, guid: cf4a079a0d8926b4fbde9ceef2a1c50e,
+      type: 3}
+  - UndeadBerserkModel: {fileID: 3814030857190341983, guid: c3dcb21e89f6da84a96c4d72c3e5e465,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
