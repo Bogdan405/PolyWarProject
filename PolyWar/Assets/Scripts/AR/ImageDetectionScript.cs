@@ -199,7 +199,7 @@ public class ImageDetectionScript : MonoBehaviour
                             }
                             else
                             {
-
+                                enemyFieldInstances[pos].SetActive(true);
                             }
 
                         }
@@ -211,7 +211,7 @@ public class ImageDetectionScript : MonoBehaviour
                             }
                             else
                             {
-
+                                enemyFieldInstances[pos].SetActive(false);
                             }
                         }
                     }
