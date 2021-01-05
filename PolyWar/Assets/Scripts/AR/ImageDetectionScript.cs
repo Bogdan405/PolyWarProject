@@ -18,10 +18,15 @@ public class ImageDetectionScript : MonoBehaviour
     public GameObject gameLogic;
     private string lastSelectedCard = null;
     private string lastSelectedField = null;
-    [SerializeField]
-    private GameObject placeable;
-    private GameObject inst_placeable;
+    private GameObject[] handInstances = { null,null,null, null, null };
+    private GameObject[] myFieldInstances = { null,null,null};
+    private GameObject[] enemyFieldInstances = { null,null,null};
 
+    private enum FieldType
+    {
+        personalField,
+        enemyField
+    }
     public int GetSelectedCard()
     {
         if (string.Compare(lastSelectedCard,"Card1") == 0)
@@ -37,6 +42,30 @@ public class ImageDetectionScript : MonoBehaviour
         return -1;
     }
 
+    public int GetSelectedCard(string card)
+    {
+        if (string.Compare(card, "Card1") == 0)
+            return 0;
+        if (string.Compare(card, "Card2") == 0)
+            return 1;
+        if (string.Compare(card, "Card3") == 0)
+            return 2;
+        if (string.Compare(card, "Card4") == 0)
+            return 3;
+        if (string.Compare(card, "Card5") == 0)
+            return 4;
+        return -1;
+    }
+    private FieldType getFieldType(string fieldName)
+    {
+        if(string.Compare(lastSelectedField, "Owl") == 0 ||
+            string.Compare(lastSelectedField, "Eagle") == 0 ||
+            string.Compare(lastSelectedField, "Snake")==0)
+        {
+            return FieldType.personalField;
+        }
+        return FieldType.enemyField;
+    }
     public int GetSelectedField()
     {
         if (string.Compare(lastSelectedField, "Owl") == 0 || string.Compare(lastSelectedField, "Elephant") == 0)
@@ -44,6 +73,16 @@ public class ImageDetectionScript : MonoBehaviour
         if (string.Compare(lastSelectedField, "Eagle") == 0 || string.Compare(lastSelectedField, "Scorpion") == 0)
             return 1;
         if (string.Compare(lastSelectedField, "Snake") == 0 || string.Compare(lastSelectedField, "Boar") == 0)
+            return 2;
+        return -1;
+    }
+    public int GetSelectedField(string field)
+    {
+        if (string.Compare(field, "Owl") == 0 || string.Compare(field, "Elephant") == 0)
+            return 0;
+        if (string.Compare(field, "Eagle") == 0 || string.Compare(field, "Scorpion") == 0)
+            return 1;
+        if (string.Compare(field, "Snake") == 0 || string.Compare(field, "Boar") == 0)
             return 2;
         return -1;
     }
@@ -55,8 +94,6 @@ public class ImageDetectionScript : MonoBehaviour
     private void Awake()
     {
         _arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-        inst_placeable = Instantiate(placeable, Vector3.zero, Quaternion.identity);
-        inst_placeable.SetActive(false);
         fieldScanned = new Dictionary<string, bool>();
         handScanned = new Dictionary<string, bool>();
         fieldScanned.Add("Snake", false);
@@ -126,22 +163,96 @@ public class ImageDetectionScript : MonoBehaviour
                     {
                         UI.GetComponent<GameUI>().UpdateSelectedButton(tracked.referenceImage.name);
                         lastSelectedCard = tracked.referenceImage.name;
+                        int pos = GetSelectedCard(tracked.referenceImage.name);
+                        if(handInstances[pos] != null)
+                        {
+                            if (gameLogic.GetComponent<Board>().IsEmptyHand(pos))
+                            {
+                                Destroy(handInstances[pos]);
+                                handInstances[pos] = null;
+                            }
+                            else
+                            {
+                                handInstances[pos].SetActive(true);
+                            }
+                        
+                        }
+                        else
+                        {
+                            if (!gameLogic.GetComponent<Board>().IsEmptyHand(pos))
+                            {
+                                handInstances[pos] = gameLogic.GetComponent<Board>().getModelOfHand(pos);
+                                handInstances[pos].SetActive(true);
+                            }
+                        }
                     }
                     if(fieldScanned.ContainsKey(tracked.referenceImage.name))
                     {
                         UI.GetComponent<GameUI>().UpdateSelectedField(tracked.referenceImage.name);
                         lastSelectedField = tracked.referenceImage.name;
+                        int pos = GetSelectedField(tracked.referenceImage.name);
+                        if (getFieldType(tracked.referenceImage.name) == FieldType.enemyField)
+                        {
+                            if (enemyFieldInstances[pos] != null)
+                            {
+                                enemyFieldInstances[pos].SetActive(false);
+                            }
+                            else
+                            {
+
+                            }
+
+                        }
+                        else
+                        {
+                            if (myFieldInstances[pos] != null)
+                            {
+                                myFieldInstances[pos].SetActive(false);
+                            }
+                            else
+                            {
+
+                            }
+                        }
                     }
-                    inst_placeable.SetActive(true);
                     
                     
-                    inst_placeable.transform.position = tracked.transform.localPosition;
-                    inst_placeable.SetActive(true);
+                    //inst_placeable.transform.position = tracked.transform.localPosition;
+                    //inst_placeable.SetActive(true);
                     //inst_placeable.transform.localPosition = new Vector3(0, 0, 0);
                     //SSTools.ShowMessage(tracked.transform.localScale.ToString(),SSTools.Position.middle,SSTools.Time.threeSecond);
                     //SSTools.ShowMessage(tracked.transform.position.ToString(),SSTools.Position.bottom,SSTools.Time.threeSecond);
                     //SSTools.ShowMessage(tracked.transform.rotation.ToString(),SSTools.Position.top,SSTools.Time.threeSecond);
 
+                }
+                else
+                {
+                    if (handScanned.ContainsKey(tracked.referenceImage.name))
+                    {
+                        int pos = GetSelectedCard(tracked.referenceImage.name);
+                        if (handInstances[pos] != null)
+                        {
+                            handInstances[pos].SetActive(false);
+                        }
+                    }
+                    if (fieldScanned.ContainsKey(tracked.referenceImage.name))
+                    {
+                        int pos = GetSelectedField(tracked.referenceImage.name);
+                        if (getFieldType(tracked.referenceImage.name) == FieldType.enemyField)
+                        {
+                            if (enemyFieldInstances[pos] != null)
+                            {
+                                enemyFieldInstances[pos].SetActive(false);
+                            }
+                        }
+                        else
+                        {
+                            if (myFieldInstances[pos] != null)
+                            {
+                                myFieldInstances[pos].SetActive(false);
+                            }
+                        }
+                    }
                 }
             }
         }

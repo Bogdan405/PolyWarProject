@@ -37,6 +37,14 @@ namespace Card
 
         }
 
+        public Element PeakCardElement(int number)
+        {
+            return HandCards[number].element;
+        }
+        public Model PeakCardModel(int number)
+        {
+            return HandCards[number].model;
+        }
         public bool isEmptyPosition(int position)
         {
             if (HandCards[position] == null)

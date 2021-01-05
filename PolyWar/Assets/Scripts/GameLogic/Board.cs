@@ -47,6 +47,35 @@ public class Board : MonoBehaviour
         return personalCards;
     }
 
+
+    public bool IsEmptyField(int position, bool enemy)
+    {
+        if (enemy)
+        {
+            return enemyCards[position].IsEmpty();
+        }
+        else
+        {
+            return personalCards[position].IsEmpty();
+        }
+        
+    }
+
+
+    public bool IsEmptyHand(int position)
+    {
+
+        return personalHand.isEmptyPosition(position);
+
+    }
+    public GameObject getModelOfHand(int position)
+    {
+        return AR.GetComponent<InstantiationScript>().MakeObj(new Pair(personalHand.PeakCardElement(position), personalHand.PeakCardModel(position)));
+    }
+    public GameObject getModelOfField(int position)
+    {
+        return AR.GetComponent<InstantiationScript>().MakeObj(new Pair(personalCards[position].element, personalCards[position].model));
+    }
     public int GetPlayedCardThisTurn()
     {
         return playedCardsThisTurn;
