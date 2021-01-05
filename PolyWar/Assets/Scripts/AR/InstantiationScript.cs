@@ -66,32 +66,32 @@ public class InstantiationScript : MonoBehaviour
         if (target.element == Card.Element.Undead)
         {
             if (target.model == Card.Model.Sentry) {
-                GameObject ModelObj = Instantiate(UndeadSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(UndeadSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
-                GameObject ModelObj = Instantiate(UndeadEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(UndeadEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
-                GameObject ModelObj = Instantiate(UndeadJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(UndeadJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
-                GameObject ModelObj = Instantiate(UndeadWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(UndeadWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
-                GameObject ModelObj = Instantiate(UndeadLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(UndeadLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else // if (target.model == Card.Model.Berserk)
             {
-                GameObject ModelObj = Instantiate(UndeadBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(UndeadBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
         }
@@ -99,32 +99,32 @@ public class InstantiationScript : MonoBehaviour
         {
             if (target.model == Card.Model.Sentry)
             {
-                GameObject ModelObj = Instantiate(AutomatonSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(AutomatonSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
-                GameObject ModelObj = Instantiate(AutomatonEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(AutomatonEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
-                GameObject ModelObj = Instantiate(AutomatonJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(AutomatonJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
-                GameObject ModelObj = Instantiate(AutomatonWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(AutomatonWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
-                GameObject ModelObj = Instantiate(AutomatonLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(AutomatonLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else // if (target.model == Card.Model.Berserk)
             {
-                GameObject ModelObj = Instantiate(AutomatonBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(AutomatonBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
         }
@@ -132,32 +132,32 @@ public class InstantiationScript : MonoBehaviour
         {
             if (target.model == Card.Model.Sentry)
             {
-                GameObject ModelObj = Instantiate(ElementalSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ElementalSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
-                GameObject ModelObj = Instantiate(ElementalEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ElementalEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
-                GameObject ModelObj = Instantiate(ElementalJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ElementalJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
-                GameObject ModelObj = Instantiate(ElementalWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ElementalWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
-                GameObject ModelObj = Instantiate(ElementalLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ElementalLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else // if (target.model == Card.Model.Berserk)
             {
-                GameObject ModelObj = Instantiate(ElementalBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ElementalBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
         }
@@ -165,32 +165,32 @@ public class InstantiationScript : MonoBehaviour
         {
             if (target.model == Card.Model.Sentry)
             {
-                GameObject ModelObj = Instantiate(ChemicalSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ChemicalSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
-                GameObject ModelObj = Instantiate(ChemicalEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ChemicalEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
-                GameObject ModelObj = Instantiate(ChemicalJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ChemicalJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
-                GameObject ModelObj = Instantiate(ChemicalWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ChemicalWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
-                GameObject ModelObj = Instantiate(ChemicalLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ChemicalLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
             else //if (target.model == Card.Model.Berserk)
             {
-                GameObject ModelObj = Instantiate(ChemicalBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
+                GameObject ModelObj = Instantiate(ChemicalBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
         }

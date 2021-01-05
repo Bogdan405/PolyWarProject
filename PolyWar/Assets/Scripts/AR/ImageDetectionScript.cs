@@ -18,9 +18,9 @@ public class ImageDetectionScript : MonoBehaviour
     public GameObject gameLogic;
     private string lastSelectedCard = null;
     private string lastSelectedField = null;
-    private GameObject[] handInstances = { null,null,null, null, null };
-    private GameObject[] myFieldInstances = { null,null,null};
-    private GameObject[] enemyFieldInstances = { null,null,null};
+    GameObject[] handInstances = { null,null,null, null, null };
+    GameObject[] myFieldInstances = { null,null,null};
+    GameObject[] enemyFieldInstances = { null,null,null};
 
     private enum FieldType
     {
@@ -164,15 +164,24 @@ public class ImageDetectionScript : MonoBehaviour
                         UI.GetComponent<GameUI>().UpdateSelectedButton(tracked.referenceImage.name);
                         lastSelectedCard = tracked.referenceImage.name;
                         int pos = GetSelectedCard(tracked.referenceImage.name);
-                        if(handInstances[pos] != null)
+                        if (handInstances[pos] == null)
+                        {
+                            SSTools.ShowMessage("des", SSTools.Position.bottom, SSTools.Time.threeSecond);
+
+                        }
+                        if (handInstances[pos] != null)
                         {
                             if (gameLogic.GetComponent<Board>().IsEmptyHand(pos))
                             {
+                                SSTools.ShowMessage("null", SSTools.Position.middle, SSTools.Time.threeSecond);
                                 Destroy(handInstances[pos]);
                                 handInstances[pos] = null;
                             }
                             else
                             {
+                                
+                                handInstances[pos].SetActive(true);
+                                handInstances[pos].transform.position = tracked.transform.localPosition;
                                 handInstances[pos].SetActive(true);
                             }
                         
@@ -181,7 +190,10 @@ public class ImageDetectionScript : MonoBehaviour
                         {
                             if (!gameLogic.GetComponent<Board>().IsEmptyHand(pos))
                             {
-                                handInstances[pos] = gameLogic.GetComponent<Board>().getModelOfHand(pos);
+                                
+                                handInstances.SetValue(gameLogic.GetComponent<Board>().getModelOfHand(pos),pos);
+                                handInstances[pos].SetActive(true);
+                                handInstances[pos].transform.position = tracked.transform.localPosition;
                                 handInstances[pos].SetActive(true);
                             }
                         }
@@ -195,11 +207,27 @@ public class ImageDetectionScript : MonoBehaviour
                         {
                             if (enemyFieldInstances[pos] != null)
                             {
-                                enemyFieldInstances[pos].SetActive(false);
+                                if (gameLogic.GetComponent<Board>().IsEmptyField(pos,true))
+                                {
+                                    Destroy(enemyFieldInstances[pos]);
+                                    enemyFieldInstances[pos] = null;
+                                }
+                                else
+                                {
+                                    enemyFieldInstances[pos].SetActive(true);
+                                    enemyFieldInstances[pos].transform.position = tracked.transform.localPosition;
+                                    enemyFieldInstances[pos].SetActive(true);
+                                }
                             }
                             else
                             {
-                                enemyFieldInstances[pos].SetActive(true);
+                                if (!gameLogic.GetComponent<Board>().IsEmptyField(pos,true))
+                                {
+                                    enemyFieldInstances[pos] = gameLogic.GetComponent<Board>().getModelOfField(pos,true);
+                                    enemyFieldInstances[pos].SetActive(true);
+                                    enemyFieldInstances[pos].transform.position = tracked.transform.localPosition;
+                                    enemyFieldInstances[pos].SetActive(true);
+                                }
                             }
 
                         }
@@ -207,11 +235,27 @@ public class ImageDetectionScript : MonoBehaviour
                         {
                             if (myFieldInstances[pos] != null)
                             {
-                                myFieldInstances[pos].SetActive(false);
+                                if (gameLogic.GetComponent<Board>().IsEmptyField(pos, false))
+                                {
+                                    Destroy(myFieldInstances[pos]);
+                                    myFieldInstances[pos] = null;
+                                }
+                                else
+                                {
+                                    myFieldInstances[pos].SetActive(true);
+                                    myFieldInstances[pos].transform.position = tracked.transform.localPosition;
+                                    myFieldInstances[pos].SetActive(true);
+                                }
                             }
                             else
                             {
-                                enemyFieldInstances[pos].SetActive(false);
+                                if (!gameLogic.GetComponent<Board>().IsEmptyField(pos, false))
+                                {
+                                    myFieldInstances[pos] = gameLogic.GetComponent<Board>().getModelOfField(pos,false);
+                                    myFieldInstances[pos].SetActive(true);
+                                    myFieldInstances[pos].transform.position = tracked.transform.localPosition;
+                                    myFieldInstances[pos].SetActive(true);
+                                }
                             }
                         }
                     }
@@ -225,6 +269,7 @@ public class ImageDetectionScript : MonoBehaviour
                     //SSTools.ShowMessage(tracked.transform.rotation.ToString(),SSTools.Position.top,SSTools.Time.threeSecond);
 
                 }
+                /*
                 else
                 {
                     if (handScanned.ContainsKey(tracked.referenceImage.name))
@@ -254,6 +299,7 @@ public class ImageDetectionScript : MonoBehaviour
                         }
                     }
                 }
+                */
             }
         }
     }

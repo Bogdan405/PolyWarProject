@@ -6647,6 +6647,7 @@ GameObject:
   - component: {fileID: 2017586499}
   - component: {fileID: 2017586501}
   - component: {fileID: 2017586500}
+  - component: {fileID: 2017586502}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -6697,8 +6698,6 @@ MonoBehaviour:
   UI: {fileID: 1369081536}
   connection: {fileID: 171987819}
   gameLogic: {fileID: 1400664297}
-  placeable: {fileID: 919132149155446097, guid: 0400a6c599ec4cc4c968231cd2de9c4d,
-    type: 3}
 --- !u!114 &2017586501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6714,6 +6713,42 @@ MonoBehaviour:
   m_ReferenceLibrary: {fileID: 11400000, guid: 50ac3a59305b594438c4e8883d977f8d, type: 2}
   m_MaxNumberOfMovingImages: 11
   m_TrackedImagePrefab: {fileID: 0}
+--- !u!114 &2017586502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017586497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c342664eb2e3a4d9bc080ee2bd76a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UndeadEnchanterModel: {fileID: 0}
+  AutomatonEnchanterModel: {fileID: 0}
+  ChemicalEnchanterModel: {fileID: 0}
+  ElementalEnchanterModel: {fileID: 0}
+  AutomatonSentryModel: {fileID: 0}
+  ElementalSentryModel: {fileID: 0}
+  ChemicalSentryModel: {fileID: 0}
+  UndeadSentryModel: {fileID: 0}
+  AutomatonJuggernautModel: {fileID: 0}
+  ElementalJuggernautModel: {fileID: 0}
+  ChemicalJuggernautModel: {fileID: 0}
+  UndeadJuggernautModel: {fileID: 0}
+  AutomatonWraithModel: {fileID: 0}
+  ElementalWraithModel: {fileID: 0}
+  ChemicalWraithModel: {fileID: 0}
+  UndeadWraithModel: {fileID: 0}
+  AutomatonLordMantisModel: {fileID: 0}
+  ElementalLordMantisModel: {fileID: 0}
+  ChemicalLordMantisModel: {fileID: 0}
+  UndeadLordMantisModel: {fileID: 0}
+  AutomatonBerserkModel: {fileID: 0}
+  ElementalBerserkModel: {fileID: 0}
+  ChemicalBerserkModel: {fileID: 0}
+  UndeadBerserkModel: {fileID: 0}
 --- !u!1 &2038630874
 GameObject:
   m_ObjectHideFlags: 0

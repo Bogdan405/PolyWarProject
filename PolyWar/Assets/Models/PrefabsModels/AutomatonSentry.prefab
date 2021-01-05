@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: beff22d258d9a1940a05d8356f059a08,
         type: 3}
       propertyPath: m_Name
-      value: AutomatonSentry Variant
+      value: AutomatonSentry
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beff22d258d9a1940a05d8356f059a08, type: 3}
