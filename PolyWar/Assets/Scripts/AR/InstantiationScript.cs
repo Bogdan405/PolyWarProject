@@ -49,37 +49,31 @@ public class InstantiationScript : MonoBehaviour
                 //GameObject.AddComponent(typeof(AnimationPlayScript)) as AnimationPlayScript;
                 // asta still ar trebui facut : ModelObj.AddComponent<EnchanterAnimator>();
                 ModelObj = Instantiate(UndeadSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
                 ModelObj = Instantiate(UndeadEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
                 ModelObj = Instantiate(UndeadJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
                 ModelObj = Instantiate(UndeadWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
                 ModelObj = Instantiate(UndeadLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else // if (target.model == Card.Model.Berserk)
             {
                 ModelObj = Instantiate(UndeadBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
         }
@@ -88,37 +82,31 @@ public class InstantiationScript : MonoBehaviour
             if (target.model == Card.Model.Sentry)
             {
                 ModelObj = Instantiate(AutomatonSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
                 ModelObj = Instantiate(AutomatonEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
                 ModelObj = Instantiate(AutomatonJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
                 ModelObj = Instantiate(AutomatonWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
                 ModelObj = Instantiate(AutomatonLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else // if (target.model == Card.Model.Berserk)
             {
                 ModelObj = Instantiate(AutomatonBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
         }
@@ -127,37 +115,31 @@ public class InstantiationScript : MonoBehaviour
             if (target.model == Card.Model.Sentry)
             {
                 ModelObj = Instantiate(ElementalSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
                 ModelObj = Instantiate(ElementalEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
                 ModelObj = Instantiate(ElementalJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
                 ModelObj = Instantiate(ElementalWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
                 ModelObj = Instantiate(ElementalLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else // if (target.model == Card.Model.Berserk)
             {
                 ModelObj = Instantiate(ElementalBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
         }
@@ -166,37 +148,31 @@ public class InstantiationScript : MonoBehaviour
             if (target.model == Card.Model.Sentry)
             {
                 ModelObj = Instantiate(ChemicalSentryModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Enchanter)
             {
                 ModelObj = Instantiate(ChemicalEnchanterModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Juggernaut)
             {
                 ModelObj = Instantiate(ChemicalJuggernautModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.Wraith)
             {
                 ModelObj = Instantiate(ChemicalWraithModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else if (target.model == Card.Model.LordMantis)
             {
                 ModelObj = Instantiate(ChemicalLordMantisModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
             else //if (target.model == Card.Model.Berserk)
             {
                 ModelObj = Instantiate(ChemicalBerserkModel, new Vector3(-9999, -9999, -9999), Quaternion.identity);
-                ModelObj.AddComponent<AnimationPlayScript>();
                 return ModelObj;
             }
         }
