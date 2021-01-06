@@ -296,7 +296,7 @@ public class ImageDetectionScript : MonoBehaviour
                                 
                                 handInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
                                 
-                                handInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90,0,0));
+                                //handInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90,0,0));
                                 handInstances[tracked.referenceImage.name].SetActive(true);
                             }
                         }
@@ -330,7 +330,7 @@ public class ImageDetectionScript : MonoBehaviour
                                     enemyFieldInstances[tracked.referenceImage.name] =  MakeObj(gameLogic.GetComponent<Board>().getModelOfField(pos,true));
                                     
                                     enemyFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                    enemyFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
+                                    //enemyFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
                                     enemyFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
@@ -360,7 +360,7 @@ public class ImageDetectionScript : MonoBehaviour
                                     myFieldInstances[tracked.referenceImage.name] = MakeObj(gameLogic.GetComponent<Board>().getModelOfField(pos,false));
                                     
                                     myFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                    myFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
+                                    //myFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
                                     myFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
@@ -390,43 +390,69 @@ public class ImageDetectionScript : MonoBehaviour
             }
         }
     }
-    public void myFieldAttack(string name)
+
+    public bool isMyFieldIdle(int pos)
     {
+        string name = GetSelectedPersonalField(pos);
+        if (myFieldInstances.ContainsKey(name))
+        {
+            return myFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle");
+        }
+        return true;
+    }
+
+    public bool isEnemyFieldIdle(int pos)
+    {
+        string name = GetSelectedEnemyField(pos);
+        if (enemyFieldInstances.ContainsKey(name))
+        {
+            return enemyFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle");
+        }
+        return true;
+    }
+    public void myFieldAttack(int pos)
+    {
+        string name = GetSelectedPersonalField(pos);
         if (myFieldInstances.ContainsKey(name))
         {
             myFieldInstances[name].GetComponent<AnimationPlayScript>().playAttack();
         }
     }
-    public void enemyFieldAttack(string name)
+    public void enemyFieldAttack(int pos)
     {
+        string name = GetSelectedEnemyField(pos);
         if (enemyFieldInstances.ContainsKey(name))
         {
             enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playAttack();
         }
     }
-    public void myFieldDefend(string name)
+    public void myFieldDefend(int pos)
     {
+        string name = GetSelectedPersonalField(pos);
         if (myFieldInstances.ContainsKey(name))
         {
             myFieldInstances[name].GetComponent<AnimationPlayScript>().playDefense();
         }
     }
-    public void enemyFieldDefend(string name)
+    public void enemyFieldDefend(int pos)
     {
+        string name = GetSelectedEnemyField(pos);
         if (enemyFieldInstances.ContainsKey(name))
         {
             enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playDefense();
         }
     }
-    public void myFieldDeath(string name)
+    public void myFieldDeath(int pos)
     {
+        string name = GetSelectedPersonalField(pos);
         if (myFieldInstances.ContainsKey(name))
         {
             myFieldInstances[name].GetComponent<AnimationPlayScript>().playDeath();
         }
     }
-    public void enemyFieldDeath(string name)
+    public void enemyFieldDeath(int pos)
     {
+        string name = GetSelectedEnemyField(pos);
         if (enemyFieldInstances.ContainsKey(name))
         {
             enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playDeath();
@@ -570,6 +596,22 @@ public class ImageDetectionScript : MonoBehaviour
                 GameObject ModelObj = Instantiate(ChemicalBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
                 return ModelObj;
             }
+        }
+    }
+
+    public void OnClickSetAllInactive()
+    {
+        foreach(string key in myFieldInstances.Keys)
+        {
+            myFieldInstances[key].SetActive(false);
+        }
+        foreach (string key in enemyFieldInstances.Keys)
+        {
+            enemyFieldInstances[key].SetActive(false);
+        }
+        foreach (string key in handInstances.Keys)
+        {
+            handInstances[key].SetActive(false);
         }
     }
 }

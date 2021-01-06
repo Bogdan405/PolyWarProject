@@ -19,7 +19,6 @@ namespace PlayerTurn {
         private TurnType currentTurn = TurnType.None;
         public GameObject turnPanel;
         public GameObject UI;
-
         public void OnClickInitTurns()
         {
             PhotonView turnPV = PhotonView.Get(this);
@@ -56,8 +55,17 @@ namespace PlayerTurn {
             UpdateTurnPanel();
             DisplaySelectedCardButton();
             DisplaySelectedFieldButton();
+            DisplayEndTurn();
         }
 
+        public void DisplayEndTurn()
+        {
+            if (IsMyTurn() &&
+                this.GetComponent<Board>().isFullField())
+            {
+                UI.GetComponent<GameUI>().SetEndTurnButton(true);
+            }
+        }
         public void DisplaySelectedCardButton()
         {
             if (IsMyTurn())

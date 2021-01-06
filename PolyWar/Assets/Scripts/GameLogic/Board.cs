@@ -119,6 +119,40 @@ public class Board : MonoBehaviour
     {
         return !personalHand.isEmptyPosition(position);
     }
+
+    public void OnClickPlayCard()
+    {
+        if (this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
+        {
+            if (personalHand.GetHandSize() == 0)
+            {
+                SSTools.ShowMessage("No more cards!", SSTools.Position.bottom, SSTools.Time.twoSecond);
+                return;
+            }
+            int cardPos = 0;
+            int fieldPos = 0;
+            while (!isLegalFieldPos(fieldPos) && fieldPos<3)
+            {
+                fieldPos++;
+            }
+            if (isLegalFieldPos(fieldPos))
+            {
+                Pair card = personalHand.GetCard(cardPos);
+                personalCards[fieldPos].Factory(card.model, card.element);
+                playedCardsThisTurn++;
+                UI.GetComponent<GameUI>().SetEndTurnButton(true);
+                if (playedCardsThisTurn == 3)
+                {
+                    UI.GetComponent<GameUI>().SetPlayCard(false);
+                }
+            }
+            else
+            {
+                SSTools.ShowMessage("Invalid Field or Card", SSTools.Position.middle, SSTools.Time.oneSecond);
+            }
+
+        }
+    }
     public void PlayCard()
     {   
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)
@@ -165,7 +199,7 @@ public class Board : MonoBehaviour
         for (int place = 0; place < 3; place++)
         {
 
-            int[] life_decrease = Battle.CommitBattle(personalCards[place], enemyCards[place]);
+            int[] life_decrease = this.GetComponent<Battle>().CommitBattle(personalCards[place], enemyCards[place],place);
             if (this.GetComponent<Turn>().IsMyTurn())
             {
                 this.GetComponent<HP>().UpdateHPValues(HP.GetPersonalHP() - life_decrease[0], HP.GetEnemyHP() - life_decrease[1]);
@@ -174,10 +208,12 @@ public class Board : MonoBehaviour
             
             if (!personalCards[place].IsAlive())
             {
+                AR.GetComponent<ImageDetectionScript>().myFieldDeath(place);
                 personalCards[place].SetEmpty();
             }
             if (!enemyCards[place].IsAlive())
             {
+                AR.GetComponent<ImageDetectionScript>().enemyFieldDeath(place);
                 enemyCards[place].SetEmpty();
             }
         }

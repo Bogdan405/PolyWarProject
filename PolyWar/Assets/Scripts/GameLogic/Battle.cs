@@ -4,27 +4,38 @@ using UnityEngine;
 using Card;
 
 namespace Card { 
-    public class Battle
+    public class Battle : MonoBehaviour
     {
-        public static int[] CommitBattle(CardClass firstCard, CardClass secondCard)
+        public GameObject AR;
+        public int[] CommitBattle(CardClass firstCard, CardClass secondCard,int place)
         {
             int[] life_reductions = { 0, 0 };
             if (!secondCard.IsEmpty())
             {
                 life_reductions[1] = secondCard.SubstractLife(CalculateDamage(firstCard.damage, firstCard.element, secondCard.element));
+                AR.GetComponent<ImageDetectionScript>().myFieldAttack(place);
+                AR.GetComponent<ImageDetectionScript>().enemyFieldDefend(place);
             }
             else
             {
                 life_reductions[1] = firstCard.damage;
+                AR.GetComponent<ImageDetectionScript>().myFieldAttack(place);
             }
+            while (!AR.GetComponent<ImageDetectionScript>().isEnemyFieldIdle(place));
+            while (!AR.GetComponent<ImageDetectionScript>().isMyFieldIdle(place));
             if (!firstCard.IsEmpty())
             {
+                AR.GetComponent<ImageDetectionScript>().myFieldDefend(place);
+                AR.GetComponent<ImageDetectionScript>().enemyFieldAttack(place);
                 life_reductions[0] = firstCard.SubstractLife(CalculateDamage(secondCard.damage, secondCard.element, firstCard.element));
             }
             else
             {
                 life_reductions[0] = secondCard.damage;
+                AR.GetComponent<ImageDetectionScript>().enemyFieldAttack(place);
             }
+            while (!AR.GetComponent<ImageDetectionScript>().isEnemyFieldIdle(place)) ;
+            while (!AR.GetComponent<ImageDetectionScript>().isMyFieldIdle(place)) ;
             return life_reductions;
         }
 
