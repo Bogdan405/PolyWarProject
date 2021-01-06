@@ -112,6 +112,22 @@ public class ImageDetectionScript : MonoBehaviour
             return 4;
         return -1;
     }
+
+    public string GetSelectedCard(int pos)
+    {
+        if (pos == 0)
+            return "Card1";
+        if (pos == 1)
+            return "Card2";
+        if (pos == 2)
+            return "Card3";
+        if (pos == 3)
+            return "Card4";
+        if (pos == 4)
+            return "Card5";
+        return null;
+    }
+
     private FieldType getFieldType(string fieldName)
     {
         if(string.Compare(lastSelectedField, "Owl") == 0 ||
@@ -141,6 +157,28 @@ public class ImageDetectionScript : MonoBehaviour
         if (string.Compare(field, "Snake") == 0 || string.Compare(field, "Boar") == 0)
             return 2;
         return -1;
+    }
+
+    public string GetSelectedEnemyField(int pos)
+    {
+        if (pos == 0)
+            return "Elephant";
+        if (pos == 1)
+            return "Scorpion";
+        if (pos == 2)
+            return "Boar";
+        return null;
+    }
+
+    public string GetSelectedPersonalField(int pos)
+    {
+        if (pos == 0)
+            return "Owl";
+        if (pos == 1)
+            return "Eagle";
+        if (pos == 2)
+            return "Snake";
+        return null;
     }
 
     public string GetSelectedFieldString()
