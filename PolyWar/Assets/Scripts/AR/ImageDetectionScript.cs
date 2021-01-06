@@ -242,7 +242,7 @@ public class ImageDetectionScript : MonoBehaviour
                                 
                                 
                                 handInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                //handInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                //handInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90,0,0));
                                 handInstances[tracked.referenceImage.name].SetActive(true);
                             }
                         
@@ -257,7 +257,8 @@ public class ImageDetectionScript : MonoBehaviour
                                 handInstances[tracked.referenceImage.name] = MakeObj(gameLogic.GetComponent<Board>().getModelOfHand(pos));
                                 
                                 handInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                //handInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                
+                                handInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90,0,0));
                                 handInstances[tracked.referenceImage.name].SetActive(true);
                             }
                         }
@@ -280,7 +281,7 @@ public class ImageDetectionScript : MonoBehaviour
                                 {
                                     
                                     enemyFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                    //enemyFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                    //enemyFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
                                     enemyFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
@@ -291,7 +292,7 @@ public class ImageDetectionScript : MonoBehaviour
                                     enemyFieldInstances[tracked.referenceImage.name] =  MakeObj(gameLogic.GetComponent<Board>().getModelOfField(pos,true));
                                     
                                     enemyFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                    //enemyFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                    enemyFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
                                     enemyFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
@@ -321,7 +322,7 @@ public class ImageDetectionScript : MonoBehaviour
                                     myFieldInstances[tracked.referenceImage.name] = MakeObj(gameLogic.GetComponent<Board>().getModelOfField(pos,false));
                                     
                                     myFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                    //myFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                    myFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
                                     myFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
@@ -329,49 +330,70 @@ public class ImageDetectionScript : MonoBehaviour
                     }
                     
                     
-                    //inst_placeable.transform.position = tracked.transform.localPosition;
-                    //inst_placeable.SetActive(true);
-                    //inst_placeable.transform.localPosition = new Vector3(0, 0, 0);
-                    //SSTools.ShowMessage(tracked.transform.localScale.ToString(),SSTools.Position.middle,SSTools.Time.threeSecond);
-                    //SSTools.ShowMessage(tracked.transform.position.ToString(),SSTools.Position.bottom,SSTools.Time.threeSecond);
-                    //SSTools.ShowMessage(tracked.transform.rotation.ToString(),SSTools.Position.top,SSTools.Time.threeSecond);
-
+                  
                 }
                 /*
                 else
                 {
-                    if (handScanned.ContainsKey(tracked.referenceImage.name))
+                    if (handInstances.ContainsKey(tracked.referenceImage.name))
                     {
-                        int pos = GetSelectedCard(tracked.referenceImage.name);
-                        if (handInstances[pos] != null)
-                        {
-                            handInstances[pos].SetActive(false);
-                        }
+                        handInstances[tracked.referenceImage.name].SetActive(false);
                     }
-                    if (fieldScanned.ContainsKey(tracked.referenceImage.name))
+                    if (enemyFieldInstances.ContainsKey(tracked.referenceImage.name))
                     {
-                        int pos = GetSelectedField(tracked.referenceImage.name);
-                        if (getFieldType(tracked.referenceImage.name) == FieldType.enemyField)
-                        {
-                            if (enemyFieldInstances[pos] != null)
-                            {
-                                enemyFieldInstances[pos].SetActive(false);
-                            }
-                        }
-                        else
-                        {
-                            if (myFieldInstances[pos] != null)
-                            {
-                                myFieldInstances[pos].SetActive(false);
-                            }
-                        }
+                        enemyFieldInstances[tracked.referenceImage.name].SetActive(false);
+                    }
+                    if (myFieldInstances.ContainsKey(tracked.referenceImage.name))
+                    {
+                        myFieldInstances[tracked.referenceImage.name].SetActive(false);
                     }
                 }
                 */
             }
         }
     }
-
+    public void myFieldAttack(string name)
+    {
+        if (myFieldInstances.ContainsKey(name))
+        {
+            myFieldInstances[name].GetComponent<AnimationPlayScript>().playAttack();
+        }
+    }
+    public void enemyFieldAttack(string name)
+    {
+        if (enemyFieldInstances.ContainsKey(name))
+        {
+            enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playAttack();
+        }
+    }
+    public void myFieldDefend(string name)
+    {
+        if (myFieldInstances.ContainsKey(name))
+        {
+            myFieldInstances[name].GetComponent<AnimationPlayScript>().playDefense();
+        }
+    }
+    public void enemyFieldDefend(string name)
+    {
+        if (enemyFieldInstances.ContainsKey(name))
+        {
+            enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playDefense();
+        }
+    }
+    public void myFieldDeath(string name)
+    {
+        if (myFieldInstances.ContainsKey(name))
+        {
+            myFieldInstances[name].GetComponent<AnimationPlayScript>().playDeath();
+        }
+    }
+    public void enemyFieldDeath(string name)
+    {
+        if (enemyFieldInstances.ContainsKey(name))
+        {
+            enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playDeath();
+        }
+    }
     public void setReady()
     {
         announced_field_scanned = true;

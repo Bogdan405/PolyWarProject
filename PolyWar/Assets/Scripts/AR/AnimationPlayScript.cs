@@ -10,19 +10,19 @@ public class AnimationPlayScript : MonoBehaviour
 		this.ThisAnimator = GetComponent<Animator>();
 	}
 	
-    void playAttack()
+    public void playAttack()
     {
         this.ThisAnimator.Play("Attack");
     }
-    void playDefense()
+    public void playDefense()
     {
         this.ThisAnimator.Play("Defense");
     }
-    void playIdle()
+    public void playIdle()
     {
         this.ThisAnimator.Play("Idle");
     }
-    void playDeath()
+    public void playDeath()
     {
         this.ThisAnimator.Play("Death");
     }
