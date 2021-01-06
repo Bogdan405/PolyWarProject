@@ -68,19 +68,18 @@ public class Board : MonoBehaviour
         return personalHand.isEmptyPosition(position);
 
     }
-    public GameObject getModelOfHand(int position)
+    public Pair getModelOfHand(int position)
     {
-        SSTools.ShowMessage(personalHand.PeakCardElement(position).ToString()+" " + personalHand.PeakCardModel(position).ToString(), SSTools.Position.top, SSTools.Time.threeSecond);
-        return AR.GetComponent<InstantiationScript>().MakeObj(new Pair(personalHand.PeakCardElement(position), personalHand.PeakCardModel(position)));
+        return new Pair(personalHand.PeakCardElement(position), personalHand.PeakCardModel(position));
     }
-    public GameObject getModelOfField(int position,bool enemy)
+    public Pair getModelOfField(int position,bool enemy)
     {
         if (!enemy)
         {
-            return AR.GetComponent<InstantiationScript>().MakeObj(new Pair(personalCards[position].element, personalCards[position].model));
+            return new Pair(personalCards[position].element, personalCards[position].model);
         }
         
-        return AR.GetComponent<InstantiationScript>().MakeObj(new Pair(enemyCards[position].element, enemyCards[position].model));
+        return new Pair(enemyCards[position].element, enemyCards[position].model);
 
     }
     public int GetPlayedCardThisTurn()

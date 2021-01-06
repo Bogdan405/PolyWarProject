@@ -47,17 +47,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9d33af3a2c7c5f848b70bde146be722f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9d33af3a2c7c5f848b70bde146be722f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9d33af3a2c7c5f848b70bde146be722f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9d33af3a2c7c5f848b70bde146be722f,
         type: 3}
@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9d33af3a2c7c5f848b70bde146be722f,
         type: 3}
       propertyPath: m_Name
-      value: ElementalWraith Variant
+      value: ElementalWraith
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d33af3a2c7c5f848b70bde146be722f, type: 3}

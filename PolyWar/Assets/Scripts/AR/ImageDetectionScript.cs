@@ -7,6 +7,8 @@ using Photon.Realtime;
 using Photon.Pun;
 using UnityEngine.XR.ARSubsystems;
 using GameUserInterface;
+using Card;
+using Pairs;
 public class ImageDetectionScript : MonoBehaviour
 {
     private ARTrackedImageManager _arTrackedImageManager;
@@ -18,10 +20,64 @@ public class ImageDetectionScript : MonoBehaviour
     public GameObject gameLogic;
     private string lastSelectedCard = null;
     private string lastSelectedField = null;
-    GameObject[] handInstances = { null,null,null, null, null };
-    GameObject[] myFieldInstances = { null,null,null};
-    GameObject[] enemyFieldInstances = { null,null,null};
+    private Dictionary<string,GameObject> handInstances;
+    private Dictionary<string, GameObject> myFieldInstances;
+    private Dictionary<string, GameObject> enemyFieldInstances;
+    [SerializeField]
+    private GameObject prefab;
+    [SerializeField]
+    private GameObject UndeadEnchanterModel;
+    [SerializeField]
+    private GameObject AutomatonEnchanterModel;
+    [SerializeField]
+    private GameObject ChemicalEnchanterModel;
+    [SerializeField]
+    private GameObject ElementalEnchanterModel;
 
+    [SerializeField]
+    private GameObject AutomatonSentryModel;
+    [SerializeField]
+    private GameObject ElementalSentryModel;
+    [SerializeField]
+    private GameObject ChemicalSentryModel;
+    [SerializeField]
+    private GameObject UndeadSentryModel;
+
+    [SerializeField]
+    private GameObject AutomatonJuggernautModel;
+    [SerializeField]
+    private GameObject ElementalJuggernautModel;
+    [SerializeField]
+    private GameObject ChemicalJuggernautModel;
+    [SerializeField]
+    private GameObject UndeadJuggernautModel;
+
+    [SerializeField]
+    private GameObject AutomatonWraithModel;
+    [SerializeField]
+    private GameObject ElementalWraithModel;
+    [SerializeField]
+    private GameObject ChemicalWraithModel;
+    [SerializeField]
+    private GameObject UndeadWraithModel;
+
+    [SerializeField]
+    private GameObject AutomatonLordMantisModel;
+    [SerializeField]
+    private GameObject ElementalLordMantisModel;
+    [SerializeField]
+    private GameObject ChemicalLordMantisModel;
+    [SerializeField]
+    private GameObject UndeadLordMantisModel;
+
+    [SerializeField]
+    private GameObject AutomatonBerserkModel;
+    [SerializeField]
+    private GameObject ElementalBerserkModel;
+    [SerializeField]
+    private GameObject ChemicalBerserkModel;
+    [SerializeField]
+    private GameObject UndeadBerserkModel;
     private enum FieldType
     {
         personalField,
@@ -107,6 +163,9 @@ public class ImageDetectionScript : MonoBehaviour
         handScanned.Add("Card3", false);
         handScanned.Add("Card4", false);
         handScanned.Add("Card5", false);
+        handInstances = new Dictionary<string, GameObject>();
+        myFieldInstances = new Dictionary<string, GameObject>();
+        enemyFieldInstances = new Dictionary<string, GameObject>();
     }
 
     public void Start()
@@ -164,25 +223,27 @@ public class ImageDetectionScript : MonoBehaviour
                         UI.GetComponent<GameUI>().UpdateSelectedButton(tracked.referenceImage.name);
                         lastSelectedCard = tracked.referenceImage.name;
                         int pos = GetSelectedCard(tracked.referenceImage.name);
-                        if (handInstances[pos] == null)
+                        /*if (handInstances[pos] == null)
                         {
                             SSTools.ShowMessage("des", SSTools.Position.bottom, SSTools.Time.threeSecond);
 
-                        }
-                        if (handInstances[pos] != null)
+                        }*/
+                        if (handInstances.ContainsKey(tracked.referenceImage.name))
                         {
                             if (gameLogic.GetComponent<Board>().IsEmptyHand(pos))
                             {
-                                SSTools.ShowMessage("null", SSTools.Position.middle, SSTools.Time.threeSecond);
-                                Destroy(handInstances[pos]);
-                                handInstances[pos] = null;
+                                //SSTools.ShowMessage("null", SSTools.Position.middle, SSTools.Time.threeSecond);
+                                
+                                Destroy(handInstances[tracked.referenceImage.name]);
+                                handInstances.Remove(tracked.referenceImage.name);
                             }
                             else
                             {
                                 
-                                handInstances[pos].SetActive(true);
-                                handInstances[pos].transform.position = tracked.transform.localPosition;
-                                handInstances[pos].SetActive(true);
+                                
+                                handInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
+                                //handInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                handInstances[tracked.referenceImage.name].SetActive(true);
                             }
                         
                         }
@@ -190,11 +251,14 @@ public class ImageDetectionScript : MonoBehaviour
                         {
                             if (!gameLogic.GetComponent<Board>().IsEmptyHand(pos))
                             {
+
+
+                                //handInstances[tracked.referenceImage.name] = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+                                handInstances[tracked.referenceImage.name] = MakeObj(gameLogic.GetComponent<Board>().getModelOfHand(pos));
                                 
-                                handInstances.SetValue(gameLogic.GetComponent<Board>().getModelOfHand(pos),pos);
-                                handInstances[pos].SetActive(true);
-                                handInstances[pos].transform.position = tracked.transform.localPosition;
-                                handInstances[pos].SetActive(true);
+                                handInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
+                                //handInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                handInstances[tracked.referenceImage.name].SetActive(true);
                             }
                         }
                     }
@@ -205,56 +269,60 @@ public class ImageDetectionScript : MonoBehaviour
                         int pos = GetSelectedField(tracked.referenceImage.name);
                         if (getFieldType(tracked.referenceImage.name) == FieldType.enemyField)
                         {
-                            if (enemyFieldInstances[pos] != null)
+                            if (enemyFieldInstances.ContainsKey(tracked.referenceImage.name))
                             {
                                 if (gameLogic.GetComponent<Board>().IsEmptyField(pos,true))
                                 {
-                                    Destroy(enemyFieldInstances[pos]);
-                                    enemyFieldInstances[pos] = null;
+                                    Destroy(enemyFieldInstances[tracked.referenceImage.name]);
+                                    enemyFieldInstances.Remove(tracked.referenceImage.name);
                                 }
                                 else
                                 {
-                                    enemyFieldInstances[pos].SetActive(true);
-                                    enemyFieldInstances[pos].transform.position = tracked.transform.localPosition;
-                                    enemyFieldInstances[pos].SetActive(true);
+                                    
+                                    enemyFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
+                                    //enemyFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                    enemyFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
                             else
                             {
                                 if (!gameLogic.GetComponent<Board>().IsEmptyField(pos,true))
                                 {
-                                    enemyFieldInstances[pos] = gameLogic.GetComponent<Board>().getModelOfField(pos,true);
-                                    enemyFieldInstances[pos].SetActive(true);
-                                    enemyFieldInstances[pos].transform.position = tracked.transform.localPosition;
-                                    enemyFieldInstances[pos].SetActive(true);
+                                    enemyFieldInstances[tracked.referenceImage.name] =  MakeObj(gameLogic.GetComponent<Board>().getModelOfField(pos,true));
+                                    
+                                    enemyFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
+                                    //enemyFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                    enemyFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
 
                         }
                         else
                         {
-                            if (myFieldInstances[pos] != null)
+                            if (myFieldInstances.ContainsKey(tracked.referenceImage.name))
                             {
                                 if (gameLogic.GetComponent<Board>().IsEmptyField(pos, false))
                                 {
-                                    Destroy(myFieldInstances[pos]);
-                                    myFieldInstances[pos] = null;
+                                    Destroy(myFieldInstances[tracked.referenceImage.name]);
+                                    myFieldInstances.Remove(tracked.referenceImage.name);
                                 }
                                 else
                                 {
-                                    myFieldInstances[pos].SetActive(true);
-                                    myFieldInstances[pos].transform.position = tracked.transform.localPosition;
-                                    myFieldInstances[pos].SetActive(true);
+                                   
+                                    myFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
+                                    //myFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                    myFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
                             else
                             {
                                 if (!gameLogic.GetComponent<Board>().IsEmptyField(pos, false))
                                 {
-                                    myFieldInstances[pos] = gameLogic.GetComponent<Board>().getModelOfField(pos,false);
-                                    myFieldInstances[pos].SetActive(true);
-                                    myFieldInstances[pos].transform.position = tracked.transform.localPosition;
-                                    myFieldInstances[pos].SetActive(true);
+                                    myFieldInstances[tracked.referenceImage.name] = MakeObj(gameLogic.GetComponent<Board>().getModelOfField(pos,false));
+                                    
+                                    myFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
+                                    //myFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                    myFieldInstances[tracked.referenceImage.name].SetActive(true);
                                 }
                             }
                         }
@@ -307,5 +375,141 @@ public class ImageDetectionScript : MonoBehaviour
     public void setReady()
     {
         announced_field_scanned = true;
+    }
+
+    public GameObject MakeObj(Pair target)
+    {
+        if (target.element == Card.Element.Undead)
+        {
+            if (target.model == Card.Model.Sentry)
+            {
+                GameObject ModelObj = Instantiate(UndeadSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Enchanter)
+            {
+                GameObject ModelObj = Instantiate(UndeadEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Juggernaut)
+            {
+                GameObject ModelObj = Instantiate(UndeadJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Wraith)
+            {
+                GameObject ModelObj = Instantiate(UndeadWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.LordMantis)
+            {
+                GameObject ModelObj = Instantiate(UndeadLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else // if (target.model == Card.Model.Berserk)
+            {
+                GameObject ModelObj = Instantiate(UndeadBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+        }
+        else if (target.element == Card.Element.Automaton)
+        {
+            if (target.model == Card.Model.Sentry)
+            {
+                GameObject ModelObj = Instantiate(AutomatonSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Enchanter)
+            {
+                GameObject ModelObj = Instantiate(AutomatonEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Juggernaut)
+            {
+                GameObject ModelObj = Instantiate(AutomatonJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Wraith)
+            {
+                GameObject ModelObj = Instantiate(AutomatonWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.LordMantis)
+            {
+                GameObject ModelObj = Instantiate(AutomatonLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else // if (target.model == Card.Model.Berserk)
+            {
+                GameObject ModelObj = Instantiate(AutomatonBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+        }
+        else if (target.element == Card.Element.Elemental)
+        {
+            if (target.model == Card.Model.Sentry)
+            {
+                GameObject ModelObj = Instantiate(ElementalSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Enchanter)
+            {
+                GameObject ModelObj = Instantiate(ElementalEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Juggernaut)
+            {
+                GameObject ModelObj = Instantiate(ElementalJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Wraith)
+            {
+                GameObject ModelObj = Instantiate(ElementalWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.LordMantis)
+            {
+                GameObject ModelObj = Instantiate(ElementalLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else // if (target.model == Card.Model.Berserk)
+            {
+                GameObject ModelObj = Instantiate(ElementalBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+        }
+        else // if(target.element == Card.Element.Chemical)
+        {
+            if (target.model == Card.Model.Sentry)
+            {
+                GameObject ModelObj = Instantiate(ChemicalSentryModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Enchanter)
+            {
+                GameObject ModelObj = Instantiate(ChemicalEnchanterModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Juggernaut)
+            {
+                GameObject ModelObj = Instantiate(ChemicalJuggernautModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.Wraith)
+            {
+                GameObject ModelObj = Instantiate(ChemicalWraithModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else if (target.model == Card.Model.LordMantis)
+            {
+                GameObject ModelObj = Instantiate(ChemicalLordMantisModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+            else //if (target.model == Card.Model.Berserk)
+            {
+                GameObject ModelObj = Instantiate(ChemicalBerserkModel, new Vector3(0, 0, 0), Quaternion.identity);
+                return ModelObj;
+            }
+        }
     }
 }
