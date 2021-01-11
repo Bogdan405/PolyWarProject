@@ -153,6 +153,24 @@ public class Board : MonoBehaviour
 
         }
     }
+
+    public void ShowHandToast(int pos)
+    {
+        CardClass x = new CardClass(personalHand.PeakCardModel(pos), personalHand.PeakCardElement(pos));
+        SSTools.ShowMessage(x.GetElement() + " " + x.GetModel().ToString(), SSTools.Position.top, SSTools.Time.twoSecond);
+        SSTools.ShowMessage(x.GetLife().ToString() + "life  " + x.GetDamage().ToString()+ "dmg", SSTools.Position.bottom, SSTools.Time.twoSecond);
+        
+    }
+    public void ShowEnemyToast(int pos)
+    {
+        SSTools.ShowMessage(enemyCards[pos].GetElement() + " " + enemyCards[pos].GetModel(), SSTools.Position.top, SSTools.Time.twoSecond);
+        SSTools.ShowMessage(enemyCards[pos].GetLife().ToString() + "life  " + enemyCards[pos].GetDamage() + "dmg", SSTools.Position.bottom, SSTools.Time.twoSecond);
+    }
+    public void ShowPersonalToast(int pos)
+    {
+        SSTools.ShowMessage(personalCards[pos].GetElement() + " " + personalCards[pos].GetModel(),SSTools.Position.top,SSTools.Time.twoSecond);
+        SSTools.ShowMessage(personalCards[pos].GetLife().ToString() + "life  " + personalCards[pos].GetDamage()+ "dmg",SSTools.Position.bottom,SSTools.Time.twoSecond);
+    }
     public void PlayCard()
     {   
         if(this.GetComponent<Turn>().IsMyTurn() && playedCardsThisTurn < 3)

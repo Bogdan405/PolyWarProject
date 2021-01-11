@@ -160,20 +160,5 @@ namespace Card {
         {
             return this.life > 0;
         }
-        public void AttackAnimation(){
-            ARModel.GetComponent<Animator>().Play("Attack");
-        }
-
-        public void DefendAnimation(){
-            ARModel.GetComponent<Animator>().Play("Defend");
-        }
-
-        public void DeathAnimation(){
-            ARModel.GetComponent<Animator>().Play("Death");
-        }
-
-        public void IdleAnimation(){
-            ARModel.GetComponent<Animator>().Play("Idle");
-        }
     }
 }

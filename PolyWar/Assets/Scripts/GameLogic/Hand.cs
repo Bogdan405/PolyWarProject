@@ -36,7 +36,7 @@ namespace Card
             return TheCard;
 
         }
-
+        
         public Element PeakCardElement(int number)
         {
             return HandCards[number].element;

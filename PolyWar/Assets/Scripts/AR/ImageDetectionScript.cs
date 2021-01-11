@@ -261,16 +261,10 @@ public class ImageDetectionScript : MonoBehaviour
                         UI.GetComponent<GameUI>().UpdateSelectedButton(tracked.referenceImage.name);
                         lastSelectedCard = tracked.referenceImage.name;
                         int pos = GetSelectedCard(tracked.referenceImage.name);
-                        /*if (handInstances[pos] == null)
-                        {
-                            SSTools.ShowMessage("des", SSTools.Position.bottom, SSTools.Time.threeSecond);
-
-                        }*/
                         if (handInstances.ContainsKey(tracked.referenceImage.name))
                         {
                             if (gameLogic.GetComponent<Board>().IsEmptyHand(pos))
                             {
-                                //SSTools.ShowMessage("null", SSTools.Position.middle, SSTools.Time.threeSecond);
                                 
                                 Destroy(handInstances[tracked.referenceImage.name]);
                                 handInstances.Remove(tracked.referenceImage.name);
@@ -280,8 +274,9 @@ public class ImageDetectionScript : MonoBehaviour
                                 
                                 
                                 handInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                //handInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90,0,0));
+                                
                                 handInstances[tracked.referenceImage.name].SetActive(true);
+                                gameLogic.GetComponent<Board>().ShowHandToast(pos);
                             }
                         
                         }
@@ -295,9 +290,10 @@ public class ImageDetectionScript : MonoBehaviour
                                 handInstances[tracked.referenceImage.name] = MakeObj(gameLogic.GetComponent<Board>().getModelOfHand(pos));
                                 
                                 handInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                
-                                //handInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90,0,0));
+
+                                handInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(0, 180, 0));
                                 handInstances[tracked.referenceImage.name].SetActive(true);
+                                gameLogic.GetComponent<Board>().ShowHandToast(pos);
                             }
                         }
                     }
@@ -321,6 +317,7 @@ public class ImageDetectionScript : MonoBehaviour
                                     enemyFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
                                     //enemyFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
                                     enemyFieldInstances[tracked.referenceImage.name].SetActive(true);
+                                    gameLogic.GetComponent<Board>().ShowEnemyToast(pos);
                                 }
                             }
                             else
@@ -330,8 +327,9 @@ public class ImageDetectionScript : MonoBehaviour
                                     enemyFieldInstances[tracked.referenceImage.name] =  MakeObj(gameLogic.GetComponent<Board>().getModelOfField(pos,true));
                                     
                                     enemyFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
-                                    //enemyFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
+                                    enemyFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(0, 180, 0));
                                     enemyFieldInstances[tracked.referenceImage.name].SetActive(true);
+                                    gameLogic.GetComponent<Board>().ShowEnemyToast(pos);
                                 }
                             }
 
@@ -351,6 +349,7 @@ public class ImageDetectionScript : MonoBehaviour
                                     myFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
                                     //myFieldInstances[tracked.referenceImage.name].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                                     myFieldInstances[tracked.referenceImage.name].SetActive(true);
+                                    gameLogic.GetComponent<Board>().ShowPersonalToast(pos);
                                 }
                             }
                             else
@@ -362,6 +361,7 @@ public class ImageDetectionScript : MonoBehaviour
                                     myFieldInstances[tracked.referenceImage.name].transform.position = tracked.transform.localPosition;
                                     //myFieldInstances[tracked.referenceImage.name].transform.Rotate(new Vector3(-90, 0, 0));
                                     myFieldInstances[tracked.referenceImage.name].SetActive(true);
+                                    gameLogic.GetComponent<Board>().ShowPersonalToast(pos);
                                 }
                             }
                         }
@@ -396,7 +396,7 @@ public class ImageDetectionScript : MonoBehaviour
         string name = GetSelectedPersonalField(pos);
         if (myFieldInstances.ContainsKey(name))
         {
-            return myFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle");
+            return myFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle") && myFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f;
         }
         return true;
     }
@@ -406,7 +406,7 @@ public class ImageDetectionScript : MonoBehaviour
         string name = GetSelectedEnemyField(pos);
         if (enemyFieldInstances.ContainsKey(name))
         {
-            return enemyFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle");
+            return enemyFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle") && enemyFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f;
         }
         return true;
     }

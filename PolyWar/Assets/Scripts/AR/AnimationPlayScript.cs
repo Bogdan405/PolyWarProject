@@ -16,7 +16,7 @@ public class AnimationPlayScript : MonoBehaviour
     }
     public void playDefense()
     {
-        this.ThisAnimator.Play("Defense");
+        this.ThisAnimator.Play("Defend");
     }
     public void playIdle()
     {
@@ -25,5 +25,10 @@ public class AnimationPlayScript : MonoBehaviour
     public void playDeath()
     {
         this.ThisAnimator.Play("Death");
+    }
+
+    public bool isIdle()
+    {
+        return this.ThisAnimator.GetParameter(0).defaultBool;
     }
 }

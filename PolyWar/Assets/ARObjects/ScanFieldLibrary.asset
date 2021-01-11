@@ -21,107 +21,107 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 2131370102901905497
       m_GuidHigh: 12523619694804772136
-    m_Size: {x: 0.3, y: 0.3}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Elephant
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: ec5b185925d01d9428a5ec6ac2d5ccad, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4677844773193349475
       m_GuidHigh: 10025567877933182383
     m_SerializedTextureGuid:
       m_GuidLow: 16506941470334033386
       m_GuidHigh: 1271822983470299129
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Owl
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 4b6c9dea6fcfe514f9b7ecda436ca611, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4820108343891185657
       m_GuidHigh: 5124129602783279270
     m_SerializedTextureGuid:
       m_GuidLow: 15475557286472514942
       m_GuidHigh: 11868047892659248011
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Scorpion
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: e966fd7e395bd6c48b1b47c3adc6b3a4, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4989087048928227112
       m_GuidHigh: 15783291544021179556
     m_SerializedTextureGuid:
       m_GuidLow: 6355740967576944751
       m_GuidHigh: 17135851528425651609
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Snake
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 60d2406f20bc5834993da5eb2cc6ceed, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5734732549451565130
       m_GuidHigh: 6258009693748421305
     m_SerializedTextureGuid:
       m_GuidLow: 13521050435282954813
       m_GuidHigh: 17978553324604384922
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Eagle
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: b92e6a3d6bbbbba49a667688fea680f9, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4804237083723847543
       m_GuidHigh: 5643679263203517328
     m_SerializedTextureGuid:
       m_GuidLow: 3640106640688104382
       m_GuidHigh: 16776399609176855801
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Boar
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 1ec143be41b43284f914fd328fbed1e8, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5700473084947592480
       m_GuidHigh: 16037929740990556305
     m_SerializedTextureGuid:
       m_GuidLow: 11845825677946866865
       m_GuidHigh: 13757143969128444282
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Card1
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 35394cb1d3b1a4647af1ce2b8d31ebbe, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4785493336951005604
       m_GuidHigh: 15717939939581552784
     m_SerializedTextureGuid:
       m_GuidLow: 775974261101212027
       m_GuidHigh: 16952345075404167914
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Card2
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: abc8b17bd07a0ac4eada4e5907d442eb, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5181689155911285681
       m_GuidHigh: 16517408430860574388
     m_SerializedTextureGuid:
       m_GuidLow: 15952992415931521066
       m_GuidHigh: 17671990878578043384
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.111182794, y: 0.1}
+    m_SpecifySize: 1
     m_Name: Card3
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 6819582a6a14dd64f86996e712863ff5, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5505261286164679323
       m_GuidHigh: 1067359899751277715
     m_SerializedTextureGuid:
       m_GuidLow: 6801581947093143418
       m_GuidHigh: 8001018216849372091
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.094129555}
+    m_SpecifySize: 1
     m_Name: Card4
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 9b324f7a12be5e64bb73bc50ad53096f, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4923252901779519430
       m_GuidHigh: 580353878832971656
     m_SerializedTextureGuid:
       m_GuidLow: 9778599561548724623
       m_GuidHigh: 6383014755414176377
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.1, y: 0.09522822}
+    m_SpecifySize: 1
     m_Name: Card5
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: f2e6f98f907d87b479f289f419069558, type: 3}
