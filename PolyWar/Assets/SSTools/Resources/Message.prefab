@@ -240,7 +240,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Connected to Server!
+  m_Text: Card not selected!
 --- !u!1 &1863032913385268
 GameObject:
   m_ObjectHideFlags: 0

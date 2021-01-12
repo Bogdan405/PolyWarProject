@@ -248,6 +248,15 @@ public class ImageDetectionScript : MonoBehaviour
             return;
         }
     }
+
+    public bool IsMyCardActive(string name)
+    {
+        return myFieldInstances[name].activeInHierarchy;
+    }
+    public bool IsEnemyCardActive(string name)
+    {
+        return enemyFieldInstances[name].activeInHierarchy;
+    }
     public void Update()
     {
         if (announced_field_scanned)
@@ -263,11 +272,13 @@ public class ImageDetectionScript : MonoBehaviour
                         int pos = GetSelectedCard(tracked.referenceImage.name);
                         if (handInstances.ContainsKey(tracked.referenceImage.name))
                         {
-                            if (gameLogic.GetComponent<Board>().IsEmptyHand(pos))
+                            if (gameLogic.GetComponent<Board>().IsEmptyHand(pos) &&
+                                handInstances[tracked.referenceImage.name].GetComponent<AnimationPlayScript>().isIdle())
                             {
-                                
-                                Destroy(handInstances[tracked.referenceImage.name]);
+                                GameObject x = handInstances[tracked.referenceImage.name];
                                 handInstances.Remove(tracked.referenceImage.name);
+                                Destroy(x);
+
                             }
                             else
                             {
@@ -394,9 +405,9 @@ public class ImageDetectionScript : MonoBehaviour
     public bool isMyFieldIdle(int pos)
     {
         string name = GetSelectedPersonalField(pos);
-        if (myFieldInstances.ContainsKey(name))
+        if (myFieldInstances.ContainsKey(name) && IsMyCardActive(GetSelectedPersonalField(pos)))
         {
-            return myFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle") && myFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f;
+            return myFieldInstances[name].GetComponent<AnimationPlayScript>().isIdle();
         }
         return true;
     }
@@ -404,16 +415,16 @@ public class ImageDetectionScript : MonoBehaviour
     public bool isEnemyFieldIdle(int pos)
     {
         string name = GetSelectedEnemyField(pos);
-        if (enemyFieldInstances.ContainsKey(name))
+        if (enemyFieldInstances.ContainsKey(name) && IsEnemyCardActive(GetSelectedPersonalField(pos)))
         {
-            return enemyFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle") && enemyFieldInstances[name].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f;
-        }
+            return enemyFieldInstances[name].GetComponent<AnimationPlayScript>().isIdle();
+                }
         return true;
     }
     public void myFieldAttack(int pos)
     {
         string name = GetSelectedPersonalField(pos);
-        if (myFieldInstances.ContainsKey(name))
+        if (myFieldInstances.ContainsKey(name) && IsMyCardActive(GetSelectedPersonalField(pos)))
         {
             myFieldInstances[name].GetComponent<AnimationPlayScript>().playAttack();
         }
@@ -421,7 +432,7 @@ public class ImageDetectionScript : MonoBehaviour
     public void enemyFieldAttack(int pos)
     {
         string name = GetSelectedEnemyField(pos);
-        if (enemyFieldInstances.ContainsKey(name))
+        if (enemyFieldInstances.ContainsKey(name) && IsEnemyCardActive(GetSelectedPersonalField(pos)))
         {
             enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playAttack();
         }
@@ -429,7 +440,7 @@ public class ImageDetectionScript : MonoBehaviour
     public void myFieldDefend(int pos)
     {
         string name = GetSelectedPersonalField(pos);
-        if (myFieldInstances.ContainsKey(name))
+        if (myFieldInstances.ContainsKey(name) && IsMyCardActive(GetSelectedPersonalField(pos)))
         {
             myFieldInstances[name].GetComponent<AnimationPlayScript>().playDefense();
         }
@@ -437,23 +448,25 @@ public class ImageDetectionScript : MonoBehaviour
     public void enemyFieldDefend(int pos)
     {
         string name = GetSelectedEnemyField(pos);
-        if (enemyFieldInstances.ContainsKey(name))
+        if (enemyFieldInstances.ContainsKey(name) && IsEnemyCardActive(GetSelectedPersonalField(pos)))
         {
             enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playDefense();
         }
+        
     }
     public void myFieldDeath(int pos)
     {
         string name = GetSelectedPersonalField(pos);
-        if (myFieldInstances.ContainsKey(name))
+        if (myFieldInstances.ContainsKey(name) && IsMyCardActive(GetSelectedPersonalField(pos)))
         {
             myFieldInstances[name].GetComponent<AnimationPlayScript>().playDeath();
         }
+        
     }
     public void enemyFieldDeath(int pos)
     {
         string name = GetSelectedEnemyField(pos);
-        if (enemyFieldInstances.ContainsKey(name))
+        if (enemyFieldInstances.ContainsKey(name) && IsEnemyCardActive(GetSelectedPersonalField(pos)))
         {
             enemyFieldInstances[name].GetComponent<AnimationPlayScript>().playDeath();
         }

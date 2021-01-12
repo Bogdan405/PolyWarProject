@@ -6,29 +6,34 @@ public class AnimationPlayScript : MonoBehaviour
 {
     public Animator ThisAnimator;
 	
+    public void Awake()
+    {
+       
+    }
 	void SetAnimator(){
 		this.ThisAnimator = GetComponent<Animator>();
 	}
 	
     public void playAttack()
     {
-        this.ThisAnimator.Play("Attack");
+        ThisAnimator.SetTrigger("Attack");
+
     }
     public void playDefense()
     {
-        this.ThisAnimator.Play("Defend");
+        ThisAnimator.SetTrigger("Defend");
     }
     public void playIdle()
     {
-        this.ThisAnimator.Play("Idle");
+        
     }
     public void playDeath()
     {
-        this.ThisAnimator.Play("Death");
+        ThisAnimator.SetTrigger("Die");
     }
 
     public bool isIdle()
     {
-        return this.ThisAnimator.GetParameter(0).defaultBool;
+        return this.ThisAnimator.GetBool("Idle");
     }
 }

@@ -213,7 +213,7 @@ public class Board : MonoBehaviour
 
     public void Fight()
     {
-        HideUI();
+        //HideUI();
         for (int place = 0; place < 3; place++)
         {
 
@@ -235,7 +235,7 @@ public class Board : MonoBehaviour
                 enemyCards[place].SetEmpty();
             }
         }
-        ShowUI();
+        //ShowUI();
     }
 
 

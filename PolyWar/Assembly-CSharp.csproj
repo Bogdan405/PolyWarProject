@@ -292,6 +292,8 @@
      <Compile Include="Assets\Scripts\AR\ImageDetectionScript.cs" />
      <Compile Include="Assets\Scripts\AR\InstantiationScript.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
+     <Compile Include="Assets\Scripts\AnimIdleStateScript.cs" />
+     <Compile Include="Assets\Scripts\AnimStateScript.cs" />
      <Compile Include="Assets\Scripts\GameLogic\Battle.cs" />
      <Compile Include="Assets\Scripts\GameLogic\Board.cs" />
      <Compile Include="Assets\Scripts\GameLogic\CardClass.cs" />

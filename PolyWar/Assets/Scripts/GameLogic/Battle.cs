@@ -21,8 +21,7 @@ namespace Card {
                 life_reductions[1] = firstCard.damage;
                 AR.GetComponent<ImageDetectionScript>().myFieldAttack(place);
             }
-            while (!AR.GetComponent<ImageDetectionScript>().isEnemyFieldIdle(place));
-            while (!AR.GetComponent<ImageDetectionScript>().isMyFieldIdle(place));
+            
             if (!firstCard.IsEmpty())
             {
                 AR.GetComponent<ImageDetectionScript>().myFieldDefend(place);
@@ -34,8 +33,7 @@ namespace Card {
                 life_reductions[0] = secondCard.damage;
                 AR.GetComponent<ImageDetectionScript>().enemyFieldAttack(place);
             }
-            while (!AR.GetComponent<ImageDetectionScript>().isEnemyFieldIdle(place)) ;
-            while (!AR.GetComponent<ImageDetectionScript>().isMyFieldIdle(place)) ;
+            
             return life_reductions;
         }
 

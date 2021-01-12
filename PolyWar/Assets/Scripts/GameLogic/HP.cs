@@ -8,7 +8,7 @@ using PlayerName;
 using GameUserInterface;
 public class HP : MonoBehaviour
 {
-    private const int startingHP = 1000;
+    private const int startingHP = 300;
     public static int personalHP;
     public static int enemyHP;
     public GameObject personalHPText;
